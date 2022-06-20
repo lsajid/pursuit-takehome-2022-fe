@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+import "../Styles/Footer.css";
 
 function Footer() {
   return (
     <div className="footer">
       <div className="content-container">
-      <p>Meals 4 NYC®</p>
+        <p> Reservation-App®</p>
       </div>  
     </div>
   )

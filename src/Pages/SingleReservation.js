@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
+
 
 function SingleReservation() {
+    
   return (
     <div>SingleReservation</div>
   )

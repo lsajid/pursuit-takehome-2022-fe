@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
 import './App.css';
 
 //import of stand alone components
@@ -7,13 +6,13 @@ import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
 
 //import pages
-import SearchRestaurants from "./Pages/Restaurant/SearchRestaurants";
-import CreateRestaurants from "./Pages/Restaurant/CreateRestaurants";
-import SingleRestaurant from "./Pages/Restaurant/SingleRestaurant";
+import SearchRestaurants from "./Pages/SearchRestaurants";
+import CreateRestaurants from "./Pages/CreateRestaurants";
+import SingleRestaurant from "./Pages/SingleRestaurant";
 
-import CreateReservation from "./Pages/Reservation/CreateReservation";
-import AllReservations from "./Pages/Reservation/AllReservations";
-import SingleReservation from "./Pages/Reservation/SingleReservation";
+import CreateReservation from "./Pages/CreateReservation";
+import AllReservations from "./Pages/AllReservations";
+import SingleReservation from "./Pages/SingleReservation";
 
 function App() {
   return (
@@ -30,6 +29,7 @@ function App() {
         <Route path="/reservation/:id" element={<SingleReservation/>}/>
 
       </Routes>
+      <Footer/>
     </div>
   );
 }
