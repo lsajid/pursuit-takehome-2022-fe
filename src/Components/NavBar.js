@@ -34,8 +34,8 @@ function NavBar() {
                 </form>
             </div>
 
-            <div className='login-box'>
-                <Button className="login-button" aria-label='view menu'>
+            <div className='menu-box'>
+                <Button className="menu-button" aria-label='view menu'>
                     <MenuIcon/>
                 </Button>
             </div>

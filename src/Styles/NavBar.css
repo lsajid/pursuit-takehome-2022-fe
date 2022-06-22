@@ -1,5 +1,6 @@
 .navbar-container{
     padding: 10px;
+    z-index: auto;
     display: flex;
     background-color: #b5ccdd;
     height: 9vh;
@@ -9,6 +10,7 @@
     flex-direction: row;
     /* flex-wrap: wrap; */
     margin-bottom: 20px;
+    overflow: hidden;
 }
 
 
@@ -29,7 +31,7 @@
 }
 
 .search-button{
-    
+    height: 30px;
 }
 
 .search-input{
@@ -37,14 +39,22 @@
     width: 40vw;
     border: none;
     border-bottom: 2px solid rgb(201, 206, 212);
-
+    transition:linear .2s .2s
 }
 
-.login-box{
+.search-input:focus{
+    width: 50vw;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid rgb(62, 135, 160);
+}
+
+.menu-box{
     background-color: #b5ccdd;
     border: none;
 }
 
-.login-button{
+.menu-button{
 
 }
