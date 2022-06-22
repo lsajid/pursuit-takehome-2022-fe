@@ -6,6 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import {Button} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 
 function NavBar() {
 
@@ -18,10 +19,11 @@ function NavBar() {
         
             <div className='form-container'>
                 <form className='search-form'>
-                    <IconButton className="search-button" aria-label="search by restaurant name or cuisine type" color="primary">
-                        <SearchIcon />
-                    </IconButton>
-                    
+                    <div>
+                        <IconButton aria-label="search by restaurant name or cuisine type" color="primary">
+                            <SearchIcon className="search-button" />
+                        </IconButton>
+                    </div>
                     <input
                         className='search-input'
                         placeholder='Cuisine, food, drinks, etc '
@@ -33,8 +35,8 @@ function NavBar() {
             </div>
 
             <div className='login-box'>
-                <Button className="login-button" variant="outlined" startIcon={<PersonIcon/>} aria-label='sign into account'>
-                    <Link to="/">Log in</Link>
+                <Button className="login-button" aria-label='view menu'>
+                    <MenuIcon/>
                 </Button>
             </div>
     </nav>
