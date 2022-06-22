@@ -1,21 +1,39 @@
 .navbar-container{
-    z-index: 7;
     padding: 10px;
     display: flex;
     background-color: #b5ccdd;
+    height: 9vh;
     justify-content: space-between;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
-.navbar-home-info{
+
+.info-image-box img{
+    height: 120px;
+    width: auto;
+}
+
+
+.search-form{
 
 }
 
-.navbar-input{
+.search-button{
 
 }
 
-.navbar-inputButton{
+.search-input{
+    
+}
+
+.login-box{
+
+}
+
+.login-button{
 
 }
