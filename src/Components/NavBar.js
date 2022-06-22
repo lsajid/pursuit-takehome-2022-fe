@@ -25,8 +25,10 @@ function NavBar() {
                     value={""}
                 />
             </form>
-
-            <button><Link to="/">Log in</Link></button>
+            <div>
+                <button><Link to="/">Log in</Link></button>
+            </div>
+            
         </div>
     </nav>
   )

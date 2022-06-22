@@ -9,7 +9,7 @@ function Restaurant( {singleRestaurant} ) {
 
         <div className='restaurant-data'>
           <div className='image-container'>
-          <img className="restaurant-image"  src={restaurantStockImg} alt='restaurant stock'/>
+            <img className="restaurant-image"  src={restaurantStockImg} alt='restaurant stock'/>
           </div>
             <div className='restaurant-name'>
               <div>

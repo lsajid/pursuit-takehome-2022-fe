@@ -1,10 +1,11 @@
 import React from 'react';
 import Restaurants from '../Components/Restaurants';
+import FilterBar from '../Components/FilterBar';
 
 function SearchRestaurants() {
   return (
     <div>
-      <h4>Browse through quality restaurants</h4>
+      <FilterBar/>
       <Restaurants/>
     </div>
   )
