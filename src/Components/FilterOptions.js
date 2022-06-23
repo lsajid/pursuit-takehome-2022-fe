@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import "../Styles/FilterOptions.css";
-import FilterOption from './FilterOption';
+import FilterOption from "./FilterOption"
 
-function FilterOptions() {
+function FilterOptions(props) {
+  //set cuisine, setLocation, set price, 
   const [ filterCategoryNames, setFilterCategoryNames ] = useState([
     {
       name: "Price", 
-      options: ["$", "$$", "$$$", "$$$$"]
+      options: ["$", "$$", "$$$"]
     },
     {
       name: "Location", 

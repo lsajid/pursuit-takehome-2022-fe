@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import "../Styles/NavBar.css";
-import logoImage from "../assets/logo_transparent.png"
+import logoImage from "../assets/logo_transparent.png";
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material';
-import PersonIcon from '@mui/icons-material/Person';
 import {Button} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -14,7 +13,7 @@ function NavBar() {
     <nav className='navbar-container'>
 
             <div className='info-image-box'>
-                <Link to="/"> <img src={logoImage} alt="link to home page"/> </Link>
+                <Link to="/"> <img src={logoImage} alt="click to go to home page"/> </Link>
             </div>
         
             <div className='form-container'>
@@ -35,7 +34,7 @@ function NavBar() {
             </div>
 
             <div className='menu-box'>
-                <Button className="menu-button" aria-label='view menu'>
+                <Button className="menu-button" aria-label='view site options and settings'>
                     <MenuIcon/>
                 </Button>
             </div>

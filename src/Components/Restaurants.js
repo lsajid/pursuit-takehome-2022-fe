@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Restaurant from './Restaurant';
+import "../Styles/Restaurants.css"
+
 
 function Restaurants() {
     const [ restaurants, setRestaurants ] = useState([])
@@ -14,12 +16,12 @@ function Restaurants() {
             }).catch((err) => {
                 console.log(err)
             })
-    }, [url])
+    }, [url]);
 
     let showAllRestaurants = restaurants.map((restaurant) => {
         return <Restaurant key={restaurant.name + "type" + restaurant.cuisine} singleRestaurant={restaurant}/>
-    })
-
+    });
+    
   return (
     <div className='all-restaurants-container'>
         {showAllRestaurants}

@@ -1,6 +1,7 @@
 import React from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Button } from '@mui/material';
+import "../Styles/FilterOption.css";
 
 function FilterOption( {category} ) {
     
@@ -10,14 +11,16 @@ function FilterOption( {category} ) {
     
   return (
     <div className='option-container'>
+        <div className='display-box'>
+            <div className='arrow-btn'>
+                <KeyboardArrowDownIcon/>
+            </div>
 
-        <div className='arrow-btn'>
-            <KeyboardArrowDownIcon/>
+            <div className='option-name'>
+                {category.name}
+            </div>
         </div>
-
-        <div className='option-name'>
-            {category.name}
-        </div>
+       
 
         <div className='option-values'>
             {displayOptionButtons}
