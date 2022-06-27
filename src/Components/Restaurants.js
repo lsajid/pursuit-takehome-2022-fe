@@ -47,27 +47,24 @@ function Restaurants({restaurants, filterCategoryNames, input, setInput, filterB
     }
   });
 
-  // console.log(filterByCategory);
-
   return (
     <div>
-      {!input ? (
-        <div className='all-restaurants-container'>
-          {showAllRestaurants}
+      {!input ? ( <div>
+        {!filterButtonValue? (
+            <div className='all-restaurants-container'>
+              {showAllRestaurants}
+            </div>
+        ) : (
+            <div className='all-restaurants-container'>
+              {filterByCategory}
+            </div>
+        )}
         </div>
-      )
-        :( <div>
-          {filterButtonValue ? (
+      ) : (
           <div className='all-restaurants-container'>
             {searchRestaurants}
           </div>
-        ) : (
-          <div className='all-restaurants-container'>
-            {filterByCategory}
-          </div>
-        )} 
-      </div>
-      )} 
+      )}
     </div>
   )
 }
