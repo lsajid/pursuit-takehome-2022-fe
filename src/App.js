@@ -32,10 +32,10 @@ function App() {
       <Routes>
 
         <Route path="/" element={<SearchRestaurants setInput={setInput} input={input}/>}/>
-        <Route path="/new/restaurant" element={<CreateRestaurants/>}/>
+        <Route path="/newRestaurant" element={<CreateRestaurants/>}/>
         <Route path="/restaurant/:id" element={<SingleRestaurant />}/>
 
-        <Route path="/new/reservation" element={<CreateReservation/>}/>
+        <Route path="/newReservation" element={<CreateReservation/>}/>
         <Route path="/reservations" element={<AllReservations/>}/>
         <Route path="/reservation/:id" element={<SingleReservation/>}/>
 

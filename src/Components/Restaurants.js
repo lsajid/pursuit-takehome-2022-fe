@@ -1,31 +1,53 @@
-import React from 'react'
+import React from 'react';
 import Restaurant from './Restaurant';
 import "../Styles/Restaurants.css";
 
 function Restaurants({restaurants, filterCategoryNames, input, setInput, filterButtonValue }) {
 
-  let filteredRestaurants = restaurants.map((restaurant) => {
+  let searchRestaurants = restaurants.map((restaurant) => {
     if(restaurant.name.toLowerCase().split(" ").includes(input.toLowerCase())){
       return <Restaurant  key={restaurant.name + "type" + restaurant.cuisine} singleRestaurant={restaurant}/>
     }
   });
 
-  console.log(filteredRestaurants)
+  console.log(searchRestaurants)
 
-    let showAllRestaurants = restaurants.map((restaurant) => {
-        return <Restaurant key={restaurant.name + "type" + restaurant.cuisine} singleRestaurant={restaurant}/>
-    });
+  let showAllRestaurants = restaurants.map((restaurant) => {
+      return <Restaurant key={restaurant.name + "type" + restaurant.cuisine} singleRestaurant={restaurant}/>
+  });
 
-    let filterByLocation = restaurants.map((restaurant) => {
-      console.log(filterButtonValue);
-      console.log(restaurant.location.includes(filterButtonValue), "if found", restaurant);
-
-      if(restaurant.location.includes(filterButtonValue)){
-        return <Restaurant key={restaurant.name + "type" + restaurant.cuisine} singleRestaurant={restaurant} />
+  const getCategory = (valOfButton) => {
+    let category;
+    for(let object of filterCategoryNames){
+      if(object.options.includes(valOfButton)){
+        category = object.name;
       }
-    })
+    }
+    return category;
+  }
 
-  console.log("filter", filterByLocation)
+  let filterByCategory = restaurants.map((restaurant) => {
+
+    if(restaurant.price === filterButtonValue && getCategory(filterButtonValue) === 'Price'){
+      return <Restaurant key={restaurant.name + "type" + restaurant.cuisine} singleRestaurant={restaurant}/>
+    }
+    if(restaurant.location === filterButtonValue && getCategory(filterButtonValue) === 'Location'){
+      console.log(restaurant.location);
+      return <Restaurant key={restaurant.name + "type" + restaurant.cuisine} singleRestaurant={restaurant}/>
+    }
+    if(restaurant.cuisine === filterButtonValue && getCategory(filterButtonValue) === 'Cuisine'){
+      console.log(restaurant.cuisine);
+      return <Restaurant key={restaurant.name + "type" + restaurant.cuisine} singleRestaurant={restaurant}/>
+    }
+    if(restaurant.diningRestriction){
+      if(restaurant.diningRestriction === filterButtonValue && getCategory(filterButtonValue) === 'Dining Restrictions'){
+        console.log(restaurant.diningRestriction);
+        return <Restaurant key={restaurant.name + "type" + restaurant.cuisine} singleRestaurant={restaurant}/>
+      }
+    }
+  });
+
+  // console.log(filterByCategory);
 
   return (
     <div>
@@ -35,13 +57,13 @@ function Restaurants({restaurants, filterCategoryNames, input, setInput, filterB
         </div>
       )
         :( <div>
-          {!filterButtonValue ? (
+          {filterButtonValue ? (
           <div className='all-restaurants-container'>
-           {filteredRestaurants}
+            {searchRestaurants}
           </div>
         ) : (
           <div className='all-restaurants-container'>
-           {filterByLocation}
+            {filterByCategory}
           </div>
         )} 
       </div>

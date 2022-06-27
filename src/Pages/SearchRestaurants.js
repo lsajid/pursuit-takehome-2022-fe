@@ -22,11 +22,12 @@ function SearchRestaurants({ input, setInput }) {
     },
     {
       name: "Dining Restrictions",
-      options: ["Takeout/Delivery"]
+      options: ["Takeout","Delivery"]
     }
   ]);
   
   const url = process.env.REACT_APP_API_URL;
+  //create handleFilterButtonChange
 
   useEffect(() => {
     fetch(`${url}/api/restaurants`)
@@ -49,7 +50,7 @@ function SearchRestaurants({ input, setInput }) {
       </div>
 
       <div className='restaurants-box'>
-        <Restaurants filterButtonValue={filterButtonValue} filterCatergoryNames={filterCategoryNames} input={input} setInput={setInput} restaurants={restaurants}/>
+        <Restaurants filterButtonValue={filterButtonValue} setFilterButtonValue={setFilterButtonValue} filterCatergoryNames={filterCategoryNames} input={input} setInput={setInput} filterCategoryNames={filterCategoryNames} restaurants={restaurants}/>
       </div>
     </div>
   )
