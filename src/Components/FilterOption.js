@@ -3,10 +3,15 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Button } from '@mui/material';
 import "../Styles/FilterOption.css";
 
-function FilterOption( {category} ) {
-    
+function FilterOption( { category, filterButtonValue, setFilterButtonValue } ) {
+
+    const handleOnClick = (event) => {
+        event.preventDefault();
+        setFilterButtonValue(event.target.value)
+    }
+
     const displayOptionButtons = category.options.map((option) => {
-        return <Button variant="outlined">{option}</Button>
+        return <Button value={option} onClick={handleOnClick} variant="outlined">{option}</Button>
     });
 
   return (

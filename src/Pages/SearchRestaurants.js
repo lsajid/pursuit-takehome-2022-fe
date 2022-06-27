@@ -4,9 +4,28 @@ import FilterBar from '../Components/FilterBar';
 import "../Styles/SearchRestaurants.css";
 
 
-function SearchRestaurants() {
+function SearchRestaurants({ input, setInput }) {
   const [ restaurants, setRestaurants ] = useState([]);
-
+  const [ filterButtonValue, setFilterButtonValue ] = useState('');
+  const [ filterCategoryNames, setFilterCategoryNames ] = useState([
+    {
+      name: "Price", 
+      options: ["$", "$$", "$$$", "$$$$"]
+    },
+    {
+      name: "Location", 
+      options: ["New York City", "Queens", 'Brooklyn']
+    },
+    {
+      name: "Cuisine", 
+      options: ['Pizza', 'American', 'Korean', 'French', 'Greek', 'Japanese', 'Mexican', 'Thai']
+    },
+    {
+      name: "Dining Restrictions",
+      options: ["Takeout/Delivery"]
+    }
+  ]);
+  
   const url = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
@@ -18,7 +37,7 @@ function SearchRestaurants() {
         }).catch((err) => {
             console.log(err)
         })
-}, [url]);
+  }, [url]);
 
   return (
     <div className='page-container'>
@@ -26,11 +45,11 @@ function SearchRestaurants() {
         <p>Carousel goes here !!</p>
       </div>
       <div className='filter-box'>
-        <FilterBar/>
+        <FilterBar filterButtonValue={filterButtonValue} setFilterButtonValue={setFilterButtonValue} filterCategoryNames={filterCategoryNames}/>
       </div>
 
       <div className='restaurants-box'>
-        <Restaurants restaurants={restaurants}/>
+        <Restaurants filterButtonValue={filterButtonValue} filterCatergoryNames={filterCategoryNames} input={input} setInput={setInput} restaurants={restaurants}/>
       </div>
     </div>
   )

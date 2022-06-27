@@ -7,7 +7,7 @@ import { IconButton } from '@mui/material';
 import {Button} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-function NavBar() {
+function NavBar({handleInput, handleSubmit, input}) {
 
   return (
     <nav className='navbar-container'>
@@ -27,9 +27,10 @@ function NavBar() {
                         className='search-input'
                         placeholder='Cuisine, food, drinks, etc '
                         type="text"
-                        onInput={""}
-                        value={""}
+                        onInput={handleInput}
+                        value={input}
                     />
+                    <button onSubmit={handleSubmit}>Search</button>
                 </form>
             </div>
 

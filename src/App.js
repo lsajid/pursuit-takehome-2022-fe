@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import './App.css';
+import { useState } from "react";
 
 //import of stand alone components
 import NavBar from "./Components/NavBar";
@@ -15,14 +16,24 @@ import AllReservations from "./Pages/AllReservations";
 import SingleReservation from "./Pages/SingleReservation";
 
 function App() {
+  const [ input, setInput ] = useState('');
+
+  const handleInput = (event) => {
+      event.preventDefault();
+      setInput(event.target.value)
+      // localStorage.setItem('searchInput', input);
+  }
+
+
+
   return (
     <div className="main">
-      <NavBar />
+      <NavBar handleInput={handleInput} input={input}/>
       <Routes>
 
-        <Route path="/" element={<SearchRestaurants/>}/>
+        <Route path="/" element={<SearchRestaurants setInput={setInput} input={input}/>}/>
         <Route path="/new/restaurant" element={<CreateRestaurants/>}/>
-        <Route path="/restaurant/:id" element={<SingleRestaurant/>}/>
+        <Route path="/restaurant/:id" element={<SingleRestaurant />}/>
 
         <Route path="/new/reservation" element={<CreateReservation/>}/>
         <Route path="/reservations" element={<AllReservations/>}/>
