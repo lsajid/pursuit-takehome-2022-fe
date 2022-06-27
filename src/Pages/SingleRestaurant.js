@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import RestaurantInfo from '../Components/RestaurantInfo';
 
 function SingleRestaurant() {
   return (

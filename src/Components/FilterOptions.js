@@ -2,34 +2,37 @@ import React, { useState } from 'react';
 import "../Styles/FilterOptions.css";
 import FilterOption from "./FilterOption"
 
-function FilterOptions(props) {
-  //set cuisine, setLocation, set price, 
+function FilterOptions({ cuisine, price, location, diningRestriction }) {
   const [ filterCategoryNames, setFilterCategoryNames ] = useState([
     {
       name: "Price", 
-      options: ["$", "$$", "$$$"]
+      options: price
     },
     {
       name: "Location", 
-      options: ["New York City", "Queens", "Brooklyn"]
+      options: location
     },
     {
       name: "Cuisine", 
-      options: ["Korean", "Pizza", "French", "American", "Greek", "Japanese", "Mexican", "Thai"]
+      options: cuisine
     },
     {
-      name: "Dining Restrictions", 
-      options:[ "TakeOut / Delivery", "Dine In"]
+      name: "Dining Restrictions",
+      options: diningRestriction
     }
   ]);
- 
-  const showAllFilterView = filterCategoryNames.map((category) => {
-    return <FilterOption category={category}/>
-  })
+
+  console.log(filterCategoryNames);
+
+
+  // const showAllFilterView = filterCategoryNames.map((category) => {
+  //   return <FilterOption category={category}/>
+  // })
 
   return (
     <div className='all-options-container'>
-      {showAllFilterView}
+      {/* {showAllFilterView} */}
+      hi
     </div>
   )
 }
