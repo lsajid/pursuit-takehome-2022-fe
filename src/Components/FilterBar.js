@@ -8,7 +8,7 @@ function FilterBar() {
       <div className='filterBar-title'>All Stores</div>
         <FilterOptions/>
     </div>
-  )
+  );
 }
 
 export default FilterBar
