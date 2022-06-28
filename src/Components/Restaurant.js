@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import restaurantStockImg from "../assets/restaurant.png"
+import restaurantStockImg from "../assets/restaurant.png";
+import "../Styles/Restaurant.css";
+import { Typography } from '@mui/material';
 
 function Restaurant( {singleRestaurant} ) {
   const id = singleRestaurant.id;
@@ -9,14 +11,13 @@ function Restaurant( {singleRestaurant} ) {
     <div className='restaurant-container'>
       <Link to={`/restaurant/${id}`}>
         <div className='restaurant-data'>
-            <div className='image-container'>
-              <img className="restaurant-image"  src={restaurantStockImg} alt='restaurant stock'/>
-            </div>
-              <div className='restaurant-name'>
-                <div>
-                    <h3>{singleRestaurant.name}</h3>
-                </div>
-              </div>
+            
+          <img className="restaurant-image"  src={restaurantStockImg} alt='restaurant stock'/>
+            
+          <div className='restaurant-name'>
+              <Typography variant="h5" component="h2">{singleRestaurant.name}</Typography>
+          </div>
+             
               <div className='restaurant-type'>
                   <div>
                     {singleRestaurant.cuisine}

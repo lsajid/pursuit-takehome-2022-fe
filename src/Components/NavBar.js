@@ -20,8 +20,8 @@ const style = {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: 500,
-    height: 600,
-    bgcolor: "rgba(215, 238, 239, 1)",
+    height: 650,
+    bgcolor: "ghostwhite",
     border: "2px solid #000",
     boxShadow: 24,
     p: 9,
@@ -122,7 +122,7 @@ function NavBar({handleInput, handleSubmit, input}) {
                     <Typography id="modal-title" variant="h5" component="h2">
                             Add Restaurant
                     </Typography>
-
+                    <hr/>
                     <div className="form-modal-box">
                         
                         <Box type="form" sx={style2} className="form-modal-box" onSubmit={handleSubmitForm}>

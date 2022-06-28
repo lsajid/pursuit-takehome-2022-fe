@@ -1,0 +1,8 @@
+.restaurant-container a{
+    text-decoration: none;
+}
+
+.restaurant-container a:visited {
+    text-decoration: none;
+    color:rgb(47, 61, 95)
+}
