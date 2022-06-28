@@ -43,7 +43,7 @@ function SearchRestaurants({ input, setInput }) {
   return (
     <div className='page-container'>
       <div className='promotions-box'>
-        <p>Carousel goes here !!</p>
+        <p></p>
       </div>
       <div className='filter-box'>
         <FilterBar filterButtonValue={filterButtonValue} setFilterButtonValue={setFilterButtonValue} filterCategoryNames={filterCategoryNames}/>

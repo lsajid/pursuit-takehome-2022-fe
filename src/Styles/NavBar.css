@@ -55,8 +55,14 @@
 .menu-box{
     background-color: #b5ccdd;
     border: none;
+    margin-right: 20px;
 }
 
 .menu-button{
 
+}
+
+.form-modal-box{
+    display: grid;
+    grid-gap: 7px;
 }
