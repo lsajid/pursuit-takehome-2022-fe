@@ -5,6 +5,7 @@ import Reservation from './Reservation';
 import axios from 'axios';
 import Box from "@mui/material/Box";
 import "../Styles/Reservations.css";
+import Typography from "@mui/material/Typography";
 
 function Reservations() {
   const [ allReservations, setAllReservations ] = useState([]);
@@ -14,10 +15,10 @@ function Reservations() {
     position: "absolute",
     top: "30%",
     left: "50%",
-    marginTop: "130px",
+    marginTop: "200px",
     transform: "translate(-50%, -50%)",
     width: "80vw",
-    height: "40vh",
+    height: "auto",
     bgcolor: "ghostwhite",
     border: "1px solid ghostwhite",
     boxShadow: 1,
@@ -38,7 +39,11 @@ function Reservations() {
 
   return (
     <div className='all-reservations-container'>
+
       <Box sx={reservationsContainerstyle}>
+        <Typography id="box title" variant="h5" component="h2">
+          All Reservations
+        </Typography>
         {displayAllReservations}
       </Box>
     </div>
