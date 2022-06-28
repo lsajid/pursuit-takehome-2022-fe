@@ -24,11 +24,14 @@ function App() {
       // localStorage.setItem('searchInput', input);
   }
 
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setInput('');
+  }
 
   return (
     <div className="main">
-      <NavBar handleInput={handleInput} input={input}/>
+      <NavBar handleSubmit={handleSubmit} handleInput={handleInput} input={input}/>
       <Routes>
 
         <Route path="/" element={<SearchRestaurants setInput={setInput} input={input}/>}/>

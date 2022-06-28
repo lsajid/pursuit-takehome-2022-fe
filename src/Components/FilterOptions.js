@@ -2,7 +2,6 @@ import React from 'react';
 import "../Styles/FilterOptions.css";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Button } from '@mui/material';
-import "../Styles/FilterOption.css";
 
 function FilterOptions({filterCategoryNames, filterButtonValue, setFilterButtonValue}) {
 
@@ -12,7 +11,7 @@ function FilterOptions({filterCategoryNames, filterButtonValue, setFilterButtonV
   }
 
   const handleResetFilterButton = () => {
-    setFilterButtonValue('')
+    setFilterButtonValue('');
   }
 
   const showAllFilters = filterCategoryNames.map((category, index) => {

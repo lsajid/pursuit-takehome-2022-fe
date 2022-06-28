@@ -1,9 +1,11 @@
 import React from 'react';
-import RestaurantInfo from '../Components/RestaurantInfo';
+import RestaurantDetails from '../Components/RestaurantDetails';
 
 function SingleRestaurant() {
   return (
-    <div>SingleRestaurant</div>
+    <div> 
+      <RestaurantDetails/> 
+    </div>
   )
 }
 

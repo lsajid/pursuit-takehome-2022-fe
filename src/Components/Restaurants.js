@@ -2,15 +2,13 @@ import React from 'react';
 import Restaurant from './Restaurant';
 import "../Styles/Restaurants.css";
 
-function Restaurants({restaurants, filterCategoryNames, input, setInput, filterButtonValue }) {
+function Restaurants({restaurants, filterCategoryNames, input, filterButtonValue }) {
 
   let searchRestaurants = restaurants.map((restaurant) => {
     if(restaurant.name.toLowerCase().split(" ").includes(input.toLowerCase())){
       return <Restaurant  key={restaurant.name + "type" + restaurant.cuisine} singleRestaurant={restaurant}/>
     }
   });
-
-  console.log(searchRestaurants)
 
   let showAllRestaurants = restaurants.map((restaurant) => {
       return <Restaurant key={restaurant.name + "type" + restaurant.cuisine} singleRestaurant={restaurant}/>

@@ -9,6 +9,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 function NavBar({handleInput, handleSubmit, input}) {
 
+    // const handleSubmit = () => {
+
+    // }
+
+    console.log(handleSubmit)
   return (
     <nav className='navbar-container'>
 
@@ -17,7 +22,7 @@ function NavBar({handleInput, handleSubmit, input}) {
             </div>
         
             <div className='form-container'>
-                <form className='search-form'>
+                <form onSubmit={handleSubmit} className='search-form'>
                     <div>
                         <IconButton aria-label="search by restaurant name or cuisine type" color="primary">
                             <SearchIcon className="search-button" />
@@ -30,7 +35,7 @@ function NavBar({handleInput, handleSubmit, input}) {
                         onInput={handleInput}
                         value={input}
                     />
-                    <button onSubmit={handleSubmit}>Search</button>
+                    <button >Search</button>
                 </form>
             </div>
 
