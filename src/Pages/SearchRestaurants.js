@@ -38,7 +38,7 @@ function SearchRestaurants({ input, setInput }) {
         }).catch((err) => {
             console.log(err)
         })
-  }, [url]);
+  }, [url, restaurants]);
 
   return (
     <div className='page-container'>

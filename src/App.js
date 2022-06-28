@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import './App.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 //import of stand alone components
 import NavBar from "./Components/NavBar";
@@ -18,16 +18,19 @@ import SingleReservation from "./Pages/SingleReservation";
 function App() {
   const [ input, setInput ] = useState('');
 
+
   const handleInput = (event) => {
       event.preventDefault();
-      setInput(event.target.value)
-      // localStorage.setItem('searchInput', input);
+      setInput(event.target.value);
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setInput('');
   }
+
+
+
 
   return (
     <div className="main">
@@ -36,7 +39,7 @@ function App() {
 
         <Route path="/" element={<SearchRestaurants setInput={setInput} input={input}/>}/>
         <Route path="/newRestaurant" element={<CreateRestaurants/>}/>
-        <Route path="/restaurant/:id" element={<SingleRestaurant />}/>
+        <Route path="/restaurant/:id" element={<SingleRestaurant/>}/>
 
         <Route path="/newReservation" element={<CreateReservation/>}/>
         <Route path="/reservations" element={<AllReservations/>}/>

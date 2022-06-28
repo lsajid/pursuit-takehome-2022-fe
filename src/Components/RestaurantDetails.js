@@ -36,7 +36,7 @@ function RestaurantDetails() {
       }).then((data) => {
         setRestaurant(data);
       }).catch((err) => console.log(err));
-  }, []);
+  }, [url, id]);
 
   const handleDelete = () => {
       axios.delete(`${url}/api/restaurants/${id}`)

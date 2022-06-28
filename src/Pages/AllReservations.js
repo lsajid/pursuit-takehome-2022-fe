@@ -6,7 +6,8 @@ import "../Styles/AllReservations.css"
 function AllReservations() {
   return (
     <div className='reservations-page-container'>
-      <Reservations/></div>
+      <Reservations/>
+    </div>
   )
 }
 

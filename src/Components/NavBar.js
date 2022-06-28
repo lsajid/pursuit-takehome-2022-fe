@@ -113,7 +113,7 @@ function NavBar({handleInput, handleSubmit, input}) {
                 </Button>
                 <Link to={"/reservations"}>
                     <Button className="menu-button">
-                        RESERVATIONS
+                        VIEW ALL RESERVATIONS
                     </Button>
                 </Link>
 

@@ -2,10 +2,10 @@ import React from 'react';
 import RestaurantDetails from '../Components/RestaurantDetails';
 import "../Styles/SingleRestaurant.css";
 
-function SingleRestaurant() {
+function SingleRestaurant({reservations}) {
   return (
     <div className='singleRestaurant-container'> 
-      <RestaurantDetails/> 
+      <RestaurantDetails reservations={reservations}/> 
     </div>
   )
 }
