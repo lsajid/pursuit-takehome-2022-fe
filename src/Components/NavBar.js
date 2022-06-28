@@ -11,6 +11,7 @@ import Box from "@mui/material/Box";
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import axios from "axios";
 
 
 const style = {
@@ -44,16 +45,19 @@ function NavBar({handleInput, handleSubmit, input}) {
         location: '', 
         cuisine: '', 
         price: '', 
-        diningRestriction: ''
+        diningRestriction: ''  //diningRestriction must be in the form of [Takeout Only OR Delivery Only]
       });
 
+    const url = process.env.REACT_APP_API_URL;
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     let navigate = useNavigate();
 
-    const addRestaurant = () => {
-        
+    const addRestaurant = (newRestaurant) => {
+        axios.post(`${url}/api/restaurants`, newRestaurant)
+            .then((res) => navigate("/"))
+            .catch((err) => console.log(err))
     }
 
     const handleTextChange = (event) => {
@@ -62,7 +66,7 @@ function NavBar({handleInput, handleSubmit, input}) {
 
     const handleSubmitForm = (event) => {
         event.preventDefault();
-        console.log("trigger")
+        addRestaurant(restaurant);
     }
 
   return (
