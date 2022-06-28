@@ -3,6 +3,15 @@ import "../Styles/FilterOptions.css";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Button } from '@mui/material';
 
+const buttonStyle = {
+  bgcolor: "ghostwhite",
+  border: "1px solid #b5ccdd",
+  borderRadius: "5px",
+  padding: "5px",
+  margin: "3px",
+  color: "grey"
+}
+
 function FilterOptions({filterCategoryNames, filterButtonValue, setFilterButtonValue}) {
 
   const handleFilterButtonChange = (event) => {
@@ -18,7 +27,7 @@ function FilterOptions({filterCategoryNames, filterButtonValue, setFilterButtonV
     return (
       <div key={index+category.name} className='option-container'>
         <div className='display-box'>
-            <div className='arrow-btn'>
+            <div className='arrow-icon'>
                 <KeyboardArrowDownIcon/>
             </div>
 
@@ -26,9 +35,9 @@ function FilterOptions({filterCategoryNames, filterButtonValue, setFilterButtonV
                 {category.name}
             </div>
         </div>
-        <div className='option-values'>
+        <div className='buttons-value-container'>
             {category.options.map((option, index) => {
-              return <Button key={option+index} value={option} onClick={handleFilterButtonChange} variant="outlined">{option}</Button>
+              return <Button sx={buttonStyle}className="single-button-filter" key={option+index} value={option} onClick={handleFilterButtonChange} variant="outlined">{option}</Button>
             })}
         </div>
     </div>
@@ -38,7 +47,7 @@ function FilterOptions({filterCategoryNames, filterButtonValue, setFilterButtonV
   return (
     <div className='all-options-container'>
       {showAllFilters}
-      <Button onClick={handleResetFilterButton}> Reset Filter </Button>
+      <Button className="button-filter"onClick={handleResetFilterButton}> Reset Filter </Button>
     </div>
   )
 }
