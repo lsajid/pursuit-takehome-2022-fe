@@ -108,9 +108,15 @@ function NavBar({handleInput, handleSubmit, input}) {
             </div>
 
             <div className='menu-box'>
-                <Button className="menu-button" onClick={handleOpen} aria-label='view site options and settings'>
-                    CREATE
+                <Button className="menu-button" onClick={handleOpen}>
+                    CREATE RESTAURANT
                 </Button>
+                <Link to={"/reservations"}>
+                    <Button className="menu-button">
+                        RESERVATIONS
+                    </Button>
+                </Link>
+
             </div>
             <Modal
                 open={open}

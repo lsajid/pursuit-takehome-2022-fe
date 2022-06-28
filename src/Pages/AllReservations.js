@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Reservations from '../Components/Reservations';
+import "../Styles/AllReservations.css"
+
 
 function AllReservations() {
   return (
-    <div>AllReservations</div>
+    <div className='reservations-page-container'>
+      <Reservations/></div>
   )
 }
 

@@ -6,7 +6,7 @@ import { Button } from '@mui/material';
 const buttonStyle = {
   bgcolor: "ghostwhite",
   border: "1px solid #b5ccdd",
-  borderRadius: "5px",
+  borderRadius: "10px",
   padding: "5px",
   margin: "3px",
   color: "grey"
