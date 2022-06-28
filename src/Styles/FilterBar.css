@@ -1,5 +1,9 @@
 .filterBar-container{
-    margin:20px;    
+    margin-left: 50px;
+    margin-top: 20px;
+    z-index: 10;
+    position: fixed;
+    width: 10vw;  
 }
 
 .filterBar-title{
