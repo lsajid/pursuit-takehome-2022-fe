@@ -5,6 +5,7 @@ import restaurantImage1 from "../assets/restaurant-singleView-image.jpeg";
 import restaurantImage2 from "../assets/restaurant-singleView-image2.jpeg";
 import restaurantImage3 from "../assets/restaurant-singleView-image3.jpeg";
 import {Button} from '@mui/material';
+import axios from "axios";
 
 function RestaurantDetails() {
   const [ restaurant, setRestaurant ] = useState({
@@ -38,8 +39,10 @@ function RestaurantDetails() {
   }, []);
 
   const handleDelete = () => {
-
-  }
+      axios.delete(`${url}/api/restaurants/${id}`)
+        .then(res => navigate("/"))
+        .catch(error => console.log(error))
+  };
 
   return (
     <div>
@@ -74,7 +77,7 @@ function RestaurantDetails() {
 
         <div>
         <Button>UPDATE</Button>
-        <Button>DELETE</Button>
+        <Button onClick={handleDelete}>DELETE</Button>
         </div>
     </div>
   )

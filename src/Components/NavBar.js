@@ -55,6 +55,7 @@ function NavBar({handleInput, handleSubmit, input}) {
     let navigate = useNavigate();
 
     const addRestaurant = (newRestaurant) => {
+        console.log(newRestaurant);
         axios.post(`${url}/api/restaurants`, newRestaurant)
             .then((res) => navigate("/"))
             .catch((err) => console.log(err))
@@ -67,6 +68,19 @@ function NavBar({handleInput, handleSubmit, input}) {
     const handleSubmitForm = (event) => {
         event.preventDefault();
         addRestaurant(restaurant);
+        setRestaurant({
+            name:'',
+            description:'',
+            phoneNumber: '', 
+            openingTime: '', 
+            closingTime: '', 
+            location: '', 
+            cuisine: '', 
+            price: '', 
+            diningRestriction: ''
+        });
+        navigate("/");
+        handleClose();
     }
 
   return (
