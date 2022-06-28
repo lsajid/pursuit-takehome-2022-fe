@@ -35,7 +35,6 @@ function NavBar({handleInput, handleSubmit, input}) {
                         onInput={handleInput}
                         value={input}
                     />
-                    <button >Search</button>
                 </form>
             </div>
 
