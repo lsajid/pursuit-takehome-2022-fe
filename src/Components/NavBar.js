@@ -25,7 +25,7 @@ const style = {
     border: "2px solid #000",
     boxShadow: 24,
     p: 9,
-  };
+};
 
   const style2 = {
     margin: "1px",
