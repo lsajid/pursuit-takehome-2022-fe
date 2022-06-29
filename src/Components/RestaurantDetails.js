@@ -6,9 +6,9 @@ import restaurantImage2 from "../assets/restaurant-singleView-image2.jpeg";
 import restaurantImage3 from "../assets/restaurant-singleView-image3.jpeg";
 import {Button, Box} from '@mui/material';
 import { Modal, Typography } from '@mui/material';
-import axios from "axios";
 import Reservation from './Reservation';
 import NewReservation from './NewReservation';
+import axios from "axios";
 
 
 
@@ -103,16 +103,9 @@ function RestaurantDetails({restaurantReservations}) {
   }
 
   const addNewReservation = (newReservation) => {
-
-    const requestOptions = {
-      method: 'POST',
-      body: newReservation,
-      redirect: 'follow'
-    };
-    fetch(`${url}/api/reservations`, requestOptions)
-      .then(response => console.log("fetch response", response))
-      .then(result => console.log(result, "result"))
-      .catch(error => console.log('error', error));
+    axios.post(`${url}/api/reservations`, newReservation)
+    .then(res => navigate(`/restaurant/${id}`))
+    .catch(error => console.log(error))
   }
 
   return (
