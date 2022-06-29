@@ -79,9 +79,9 @@ function RestaurantDetails({restaurantReservations}) {
         .catch(error => console.log(error))
   };
 
-  const reservation = restaurantReservations.map((reservation) => {
+  const reservation = restaurantReservations.map((reservation, index) => {
     return (
-      <div><Reservation reservation={reservation}/></div>
+      <div><Reservation key={reservation.firstName + index} reservation={reservation}/></div>
     )
   })
 
@@ -89,9 +89,9 @@ function RestaurantDetails({restaurantReservations}) {
     setNewReservation({...newReservation, [event.target.id] : event.target.value, restaurantId: id});
   }
 
-  const handleSubmitNewReservation = (event) => {
-    event.preventDefault();
-    //POST request
+  const handleSubmitForm = (event) => {
+    event.preventDefault()
+    addNewReservation(newReservation);
     setNewReservation({
       firstName: "",
       lastName: "",
@@ -100,6 +100,19 @@ function RestaurantDetails({restaurantReservations}) {
       time: "",
       numGuests: ""
     })
+  }
+
+  const addNewReservation = (newReservation) => {
+
+    const requestOptions = {
+      method: 'POST',
+      body: newReservation,
+      redirect: 'follow'
+    };
+    fetch(`${url}/api/reservations`, requestOptions)
+      .then(response => console.log("fetch response", response))
+      .then(result => console.log(result, "result"))
+      .catch(error => console.log('error', error));
   }
 
   return (
@@ -145,7 +158,7 @@ function RestaurantDetails({restaurantReservations}) {
       </div>
 
       <div className='new-form'>
-        <NewReservation newReservation={newReservation} handleTextChange={handleTextChange} handleSubmitNewReservation={handleSubmitNewReservation} />
+        <NewReservation newReservation={newReservation} handleTextChange={handleTextChange}  handleSubmitForm={handleSubmitForm}/>
       </div>
 
       <Modal
