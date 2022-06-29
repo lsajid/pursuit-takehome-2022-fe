@@ -27,12 +27,12 @@ const style = {
     p: 9,
 };
 
-  const style2 = {
+const style2 = {
     margin: "1px",
     padding: "2px",
     width: 500,
     height: 590
-  }
+}
 
 function NavBar({handleInput, handleSubmit, input}) {
     const [open, setOpen] = useState(false);

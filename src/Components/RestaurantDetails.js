@@ -8,11 +8,24 @@ import {Button, Box} from '@mui/material';
 import { Modal, Typography } from '@mui/material';
 import axios from "axios";
 import Reservation from './Reservation';
+import NewReservation from './NewReservation';
 
 
 
 function RestaurantDetails({restaurantReservations}) {
   const [open, setOpen] = useState(false);
+  
+  const [newReservation, setNewReservation ] = useState({
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    email: "",
+    time: "",
+    numGuests: ""
+  });
+
+  const {id} = useParams();
+
   const [ restaurant, setRestaurant ] = useState({
     name:'',
     description:'',
@@ -42,7 +55,7 @@ function RestaurantDetails({restaurantReservations}) {
   const handleClose = () => setOpen(false);
 
   const navigate = useNavigate();
-  const {id} = useParams();
+  
   const url = process.env.REACT_APP_API_URL;
 
   const imageArray = [ restaurantImage1, restaurantImage2, restaurantImage3];
@@ -72,7 +85,22 @@ function RestaurantDetails({restaurantReservations}) {
     )
   })
 
-  console.log(reservation, "trigger")
+  const handleTextChange = (event) => {
+    setNewReservation({...newReservation, [event.target.id] : event.target.value, restaurantId: id});
+  }
+
+  const handleSubmitNewReservation = (event) => {
+    event.preventDefault();
+    //POST request
+    setNewReservation({
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      email: "",
+      time: "",
+      numGuests: ""
+    })
+  }
 
   return (
     <div>
@@ -112,11 +140,14 @@ function RestaurantDetails({restaurantReservations}) {
 
       
       <div>
-      {/* <Button onClick={handleOpen}>VIEW RESERVATIONS</Button> */}
+        <Button onClick={handleOpen}>VIEW RESERVATIONS</Button>
         <Button onClick={handleDelete}>DELETE</Button>
       </div>
 
-      <Button onClick={handleOpen}>VIEW RESERVATIONS</Button>
+      <div className='new-form'>
+        <NewReservation newReservation={newReservation} handleTextChange={handleTextChange} handleSubmitNewReservation={handleSubmitNewReservation} />
+      </div>
+
       <Modal
         open={open}
         onClose={handleClose}
@@ -134,7 +165,9 @@ function RestaurantDetails({restaurantReservations}) {
               </>
             ) : (
               <>
-              no reservation here
+                <Typography>
+                  There are no active reservations for this restaurant. Please make a reservation.
+                </Typography>
               </>
             )}
           </Typography>
