@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormControl, Box, InputLabel, Button, OutlinedInput, Typography } from '@mui/material';
+import { FormControl, InputLabel, Button, OutlinedInput, Typography } from '@mui/material';
 
 
 function NewReservation({ newReservation, handleTextChange, handleSubmitForm }) {

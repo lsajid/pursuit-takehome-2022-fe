@@ -3,14 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../Styles/NavBar.css";
 import logoImage from "../assets/logo_transparent.png";
 import SearchIcon from '@mui/icons-material/Search';
-import { IconButton } from '@mui/material';
-import {Button} from '@mui/material';
-import Modal from "@mui/material/Modal";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
+import { IconButton, Button, Modal, Typography, Box, OutlinedInput, InputLabel, FormControl } from '@mui/material';
 import axios from "axios";
 
 

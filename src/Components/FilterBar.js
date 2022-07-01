@@ -9,7 +9,7 @@ function FilterBar({filterCategoryNames, filterButtonValue, setFilterButtonValue
       <Typography variant="h5" component="h2" className='filterBar-title'>
         All Stores
       </Typography>
-        <FilterOptions filterButtonValue={filterButtonValue} setFilterButtonValue={setFilterButtonValue} filterCategoryNames={filterCategoryNames}/>
+      <FilterOptions filterButtonValue={filterButtonValue} setFilterButtonValue={setFilterButtonValue} filterCategoryNames={filterCategoryNames}/>
     </div>
   );
 }

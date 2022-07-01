@@ -1,8 +1,48 @@
+.restaurant-container{
+    border: saddlebrown 1px solid;
+}
+
 .restaurant-container a{
     text-decoration: none;
+    color:rgb(33, 49, 75)
 }
 
 .restaurant-container a:visited {
     text-decoration: none;
     color:rgb(47, 61, 95)
 }
+
+.restaurant-data{
+ background-color: aquamarine;
+}
+
+.restaurant-data img {
+    height: 100px;
+}
+
+.restaurant-name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right:50px;
+}
+
+.restaurant-type{
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right:50px;
+}
+
+.restaurant-location{
+    background-color: azure;
+    display: flex;
+    align-items: space-between;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right:50px;
+}
+

@@ -1,5 +1,8 @@
 .all-restaurants-container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    min-height: 750px;
+    min-height: 800px;
+    background-color: blue;
+    margin: 30px;
+    padding: 50px;
 }

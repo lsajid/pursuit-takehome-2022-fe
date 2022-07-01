@@ -27,7 +27,6 @@ function SearchRestaurants({ input, setInput }) {
   ]);
   
   const url = process.env.REACT_APP_API_URL;
-  //create handleFilterButtonChange
 
   useEffect(() => {
     fetch(`${url}/api/restaurants`)
@@ -42,9 +41,6 @@ function SearchRestaurants({ input, setInput }) {
 
   return (
     <div className='page-container'>
-      <div className='promotions-box'>
-        <p></p>
-      </div>
       <div className='filter-box'>
         <FilterBar filterButtonValue={filterButtonValue} setFilterButtonValue={setFilterButtonValue} filterCategoryNames={filterCategoryNames}/>
       </div>

@@ -1,23 +1,21 @@
 .page-container{
-    margin-top: 130px;
+    margin-top: 100px;
     display: grid;
     grid-template-columns: 1fr 2fr 2fr;
     grid-template-areas: 
-    "fil car car" 
+    "fil . ." 
     "fil rest rest" 
     "fil rest rest";
 }
 
-.promotions-box{
-    grid-area: car
-}
-
 .filter-box{
     grid-area: fil;
-    margin-right: 80px;
+    place-content: center / center;
+    margin-left: 0px;
 }
 
 .restaurants-box{
     grid-area: rest;
+    background-color: blanchedalmond;
     place-content: center/center;
 }
