@@ -2,56 +2,88 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import restaurantStockImg from "../assets/restaurant.png";
 import "../Styles/Restaurant.css";
-import { Typography } from '@mui/material';
+// import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
+import { styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+
+const Img = styled("img")({
+  margin: 'auto',
+  display: 'block',
+  maxWidth: '100%',
+  maxHeight: '100%',
+});
+
+const paperStyle = {
+  p: 2,
+  margin: 'auto',
+  maxWidth: 500,
+  flexGrow: 1,
+  backgroundColor: "rgb(245, 240, 233)"
+}
 
 function Restaurant( { singleRestaurant } ) {
   const id = singleRestaurant.id;
-
   return ( 
     <div className='restaurant-container'>
       <Link to={`/restaurant/${id}`}>
-        <div className='restaurant-data'>
+        <Paper
+        sx={paperStyle}
+        >
+          <Grid container spacing={2}>
             
-          <div className='first-row'>
-            <img className="restaurant-image"  src={restaurantStockImg} alt='restaurant stock'/>
-          </div>
-          <div className="second-row">
-          <div className='restaurant-name'>
-              <Typography variant="h5" component="h2">
-                {singleRestaurant.name}
-              </Typography>
-          </div>
+            <Grid item sx={{ width: 128, height: 128 }}>
+              <Img alt={`Dining view of ${singleRestaurant.name}`} src={restaurantStockImg}/>
+            </Grid>
 
-          <div className='restaurant-type'>
-              <Typography>
-                <RestaurantOutlinedIcon/>
-                {singleRestaurant.cuisine}
-              </Typography>
-
-              <Typography>
-                <AccessTimeOutlinedIcon/>
-                {singleRestaurant.openingTime} - {singleRestaurant.closingTime}
-              </Typography>
-          </div>
-
-          <div className='restaurant-location'>
-              <Typography>
-                <LocationOnIcon/>
-                  {singleRestaurant.location}
-              </Typography>
-
-              <Typography>
-                      <CreditCardOutlinedIcon size="small"/>
-                      {singleRestaurant.price}
-              </Typography>
-          </div>
-          </div>
-          
-        </div>
+            <Grid item xs={12} sm container>
+                <Grid item xs container direction="column" spacing={2}>
+                <Grid item xs>
+                  <Typography className="restaurant-name" gutterBottom variant="subtitle1" component="div">
+                    {singleRestaurant.name}
+                  </Typography>
+                  <hr/>
+                  <Typography variant="body2" color="text.secondary" gutterBottom>
+                    <div>
+                      <LocationOnIcon/> 
+                      <span>
+                        {singleRestaurant.location}
+                      </span>
+                    </div>
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    <div>
+                      <RestaurantOutlinedIcon/>
+                      <span>
+                      {singleRestaurant.cuisine}
+                      </span>
+                    </div>
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    <div>
+                      <AccessTimeOutlinedIcon/>
+                      <span>
+                        {singleRestaurant.openingTime} - {singleRestaurant.closingTime}
+                      </span>
+                    </div>
+                    
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    <div>
+                      <span>
+                        {singleRestaurant.price}
+                      </span>
+                    </div>
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Paper>
       </Link>
     </div>
   )

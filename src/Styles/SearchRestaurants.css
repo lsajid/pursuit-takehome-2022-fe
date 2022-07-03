@@ -16,6 +16,6 @@
 
 .restaurants-box{
     grid-area: rest;
-    background-color: blanchedalmond;
+    /* background-color: rgb(245, 240, 233); */
     place-content: center/center;
 }
