@@ -47,6 +47,7 @@ function FilterOptions({filterCategoryNames, filterButtonValue, setFilterButtonV
   return (
     <div className='all-options-container'>
       {showAllFilters}
+      <Button>CUSTOM BUTTON</Button>
       <Button className="button-filter"onClick={handleResetFilterButton}> Reset Filter </Button>
     </div>
   )
