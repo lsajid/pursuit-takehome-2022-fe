@@ -30,7 +30,6 @@ function Restaurants({restaurants, filterCategoryNames, input, filterButtonValue
       return <Restaurant key={restaurant.name + "type" + restaurant.cuisine} singleRestaurant={restaurant}/>
     }
     if(restaurant.location === filterButtonValue && getCategory(filterButtonValue) === 'Location'){
-      console.log(restaurant.location);
       return <Restaurant key={restaurant.name + "type" + restaurant.cuisine} singleRestaurant={restaurant}/>
     }
     if(restaurant.cuisine === filterButtonValue && getCategory(filterButtonValue) === 'Cuisine'){

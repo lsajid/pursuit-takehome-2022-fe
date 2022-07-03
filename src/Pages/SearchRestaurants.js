@@ -22,7 +22,7 @@ function SearchRestaurants({ input, setInput }) {
     },
     {
       name: "Dining Restrictions",
-      options: ["Takeout", "Delivery"]
+      options: ["Takeout Only", "Delivery Only"]
     }
   ]);
   
