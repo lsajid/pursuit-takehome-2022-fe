@@ -14,7 +14,7 @@ function SearchRestaurants({ input, setInput }) {
     },
     {
       name: "Location", 
-      options: ["New York City", "Queens", 'Brooklyn']
+      options: ["New York", "Queens", 'Brooklyn']
     },
     {
       name: "Cuisine", 
@@ -22,7 +22,7 @@ function SearchRestaurants({ input, setInput }) {
     },
     {
       name: "Dining Restrictions",
-      options: ["Takeout Only", "Delivery Only"]
+      options: ["Takeout", "Delivery"]
     }
   ]);
   

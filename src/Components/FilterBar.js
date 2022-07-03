@@ -6,7 +6,7 @@ import { Typography } from '@mui/material';
 function FilterBar({filterCategoryNames, filterButtonValue, setFilterButtonValue}) {
   return (
     <div className='filterBar-container'>
-      <Typography variant="h5" component="h2" className='filterBar-title'>
+      <Typography gutterBottom variant="h5" component="div" className='filterBar-title'>
         All Stores
       </Typography>
       <FilterOptions filterButtonValue={filterButtonValue} setFilterButtonValue={setFilterButtonValue} filterCategoryNames={filterCategoryNames}/>

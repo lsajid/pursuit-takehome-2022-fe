@@ -4,15 +4,19 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Button } from '@mui/material';
 
 const buttonStyle = {
-  bgcolor: "ghostwhite",
-  border: "1px solid #b5ccdd",
-  borderRadius: "10px",
-  padding: "5px",
-  margin: "3px",
-  color: "grey"
+  background: 'linear-gradient(45deg, #FE7B9B 30%, #FF9E53 90%)',
+  margin: "2px",
+  border: 0,
+  borderRadius: 3,
+  boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  color: 'white',
+  height: 35,
+  fontsize: "small", 
+  width: 100,
+  padding: '0 30px',
 }
 
-function FilterOptions({filterCategoryNames, filterButtonValue, setFilterButtonValue}) {
+function FilterOptions({filterCategoryNames, setFilterButtonValue}) {
 
   const handleFilterButtonChange = (event) => {
     event.preventDefault();
@@ -47,7 +51,6 @@ function FilterOptions({filterCategoryNames, filterButtonValue, setFilterButtonV
   return (
     <div className='all-options-container'>
       {showAllFilters}
-      <Button>CUSTOM BUTTON</Button>
       <Button className="button-filter"onClick={handleResetFilterButton}> Reset Filter </Button>
     </div>
   )
