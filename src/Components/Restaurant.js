@@ -23,7 +23,7 @@ const paperStyle = {
   margin: 'auto',
   maxWidth: 500,
   flexGrow: 1,
-  backgroundColor: "rgb(245, 240, 233)"
+  backgroundColor: "rgb(250, 240, 230)"
 }
 
 function Restaurant( { singleRestaurant } ) {
