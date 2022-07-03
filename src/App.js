@@ -7,7 +7,7 @@ import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
 
 //import pages
-import SearchRestaurants from "./Pages/SearchRestaurants";
+import AllRestaurants from "./Pages/AllRestaurants";
 import CreateRestaurants from "./Pages/CreateRestaurants";
 import SingleRestaurant from "./Pages/SingleRestaurant";
 
@@ -16,28 +16,25 @@ import AllReservations from "./Pages/AllReservations";
 import SingleReservation from "./Pages/SingleReservation";
 
 function App() {
-  const [ input, setInput ] = useState('');
+  const [ input, setInput ] = useState(''); //useState hook for the searchInput ...
 
-
-  const handleInput = (event) => {
-      event.preventDefault();
+  const handleInput = (event) => { ///handles search input
       setInput(event.target.value);
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) => { //handles search submit
     event.preventDefault();
     setInput('');
   }
 
-
-
-
   return (
     <div className="main">
-      <NavBar handleSubmit={handleSubmit} handleInput={handleInput} input={input}/>
-      <Routes>
 
-        <Route path="/" element={<SearchRestaurants setInput={setInput} input={input}/>}/>
+      {/* pass handleInput and input into the navbar for functionalit y */}
+      <NavBar handleSubmit={handleSubmit} handleInput={handleInput} input={input}/>
+      <Routes>  
+        {/* pass setInput and input into AllRestaurants */}
+        <Route path="/" element={<AllRestaurants setInput={setInput} input={input}/>}/>
         <Route path="/newRestaurant" element={<CreateRestaurants/>}/>
         <Route path="/restaurant/:id" element={<SingleRestaurant/>}/>
 

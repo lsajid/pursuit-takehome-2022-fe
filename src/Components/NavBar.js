@@ -221,14 +221,11 @@ function NavBar({handleInput, handleSubmit, input}) {
                                     label="diningRestriction"
                                 />
                             </FormControl>
-                            
-                            
                         </Box>
                     </div>
                     <Button variant="outlined" onClick={handleSubmitForm}type='submit'>Submit</Button>
                 </Box>
             </Modal>
- 
     </nav>
   )
 }

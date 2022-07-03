@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Restaurants from '../Components/Restaurants';
 import FilterBar from '../Components/FilterBar';
-import "../Styles/SearchRestaurants.css";
+import "../Styles/AllRestaurants.css";
 
 
-function SearchRestaurants({ input, setInput }) {
+function AllRestaurants({ input, setInput }) {
   const [ restaurants, setRestaurants ] = useState([]);
   const [ filterButtonValue, setFilterButtonValue ] = useState('');
   const [ filterCategoryNames, setFilterCategoryNames ] = useState([
@@ -46,10 +46,11 @@ function SearchRestaurants({ input, setInput }) {
       </div>
 
       <div className='restaurants-box'>
+        {/* pass input fields and setInput down into Restaurants component */}
         <Restaurants filterButtonValue={filterButtonValue} setFilterButtonValue={setFilterButtonValue} filterCatergoryNames={filterCategoryNames} input={input} setInput={setInput} filterCategoryNames={filterCategoryNames} restaurants={restaurants}/>
       </div>
     </div>
   )
 }
 
-export default SearchRestaurants
+export default AllRestaurants
