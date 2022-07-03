@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import restaurantStockImg from "../assets/restaurant.png";
 import "../Styles/Restaurant.css";
-// import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
@@ -23,7 +22,7 @@ const paperStyle = {
   margin: 'auto',
   maxWidth: 500,
   flexGrow: 1,
-  backgroundColor: "rgb(250, 240, 230)"
+  backgroundColor: "rgb(246, 242, 237)"
 }
 
 function Restaurant( { singleRestaurant } ) {
