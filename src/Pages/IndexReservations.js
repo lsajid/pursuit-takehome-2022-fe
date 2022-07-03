@@ -1,9 +1,9 @@
 import React from 'react';
 import Reservations from '../Components/Reservations';
-import "../Styles/AllReservations.css"
+import "../Styles/IndexReservations.css"
 
 
-function AllReservations() {
+function IndexReservations() {
   return (
     <div className='reservations-page-container'>
       <Reservations/>
@@ -11,4 +11,4 @@ function AllReservations() {
   )
 }
 
-export default AllReservations
+export default IndexReservations

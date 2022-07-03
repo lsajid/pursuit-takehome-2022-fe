@@ -5,7 +5,7 @@ import logoImage from "../assets/logo_transparent.png";
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton, Button, Modal, Typography, Box, OutlinedInput, InputLabel, FormControl } from '@mui/material';
 import axios from "axios";
-
+import CreateRestaurantModal from './CreateRestaurantModal';
 
 const style = {
     position: "absolute",
@@ -226,6 +226,7 @@ function NavBar({handleInput, handleSubmit, input}) {
                     <Button variant="outlined" onClick={handleSubmitForm}type='submit'>Submit</Button>
                 </Box>
             </Modal>
+            <div>HIIII</div>
     </nav>
   )
 }

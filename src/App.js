@@ -1,19 +1,16 @@
 import { Routes, Route } from "react-router-dom";
 import './App.css';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 //import of stand alone components
 import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
 
 //import pages
-import AllRestaurants from "./Pages/AllRestaurants";
-import CreateRestaurants from "./Pages/CreateRestaurants";
+import Home from "./Pages/Home";
 import SingleRestaurant from "./Pages/SingleRestaurant";
+import IndexReservations from "./Pages/IndexReservations";
 
-import CreateReservation from "./Pages/CreateReservation";
-import AllReservations from "./Pages/AllReservations";
-import SingleReservation from "./Pages/SingleReservation";
 
 function App() {
   const [ input, setInput ] = useState(''); //useState hook for the searchInput ...
@@ -34,14 +31,9 @@ function App() {
       <NavBar handleSubmit={handleSubmit} handleInput={handleInput} input={input}/>
       <Routes>  
         {/* pass setInput and input into AllRestaurants */}
-        <Route path="/" element={<AllRestaurants setInput={setInput} input={input}/>}/>
-        <Route path="/newRestaurant" element={<CreateRestaurants/>}/>
+        <Route path="/" element={<Home setInput={setInput} input={input}/>}/>
         <Route path="/restaurant/:id" element={<SingleRestaurant/>}/>
-
-        <Route path="/newReservation" element={<CreateReservation/>}/>
-        <Route path="/reservations" element={<AllReservations/>}/>
-        <Route path="/reservation/:id" element={<SingleReservation/>}/>
-
+        <Route path="/reservations" element={<IndexReservations/>}/>
       </Routes>
       <Footer/>
     </div>

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Restaurants from '../Components/Restaurants';
 import FilterBar from '../Components/FilterBar';
-import "../Styles/AllRestaurants.css";
+import "../Styles/Home.css";
 
 
-function AllRestaurants({ input, setInput }) {
+function Home({ input, setInput }) {
   const [ restaurants, setRestaurants ] = useState([]);
   const [ filterButtonValue, setFilterButtonValue ] = useState('');
   const [ filterCategoryNames, setFilterCategoryNames ] = useState([
@@ -53,4 +53,4 @@ function AllRestaurants({ input, setInput }) {
   )
 }
 
-export default AllRestaurants
+export default Home
