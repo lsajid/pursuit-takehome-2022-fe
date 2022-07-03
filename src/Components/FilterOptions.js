@@ -5,12 +5,12 @@ import { Button } from '@mui/material';
 
 const buttonStyle = {
   background: 'linear-gradient(45deg, #FE7B9B 30%, #FF9E53 90%)',
-  margin: "2px",
+  margin: "3px",
   border: 0,
   borderRadius: 3,
+  minHeight: "28px",
   boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
   color: 'white',
-  height: 35,
   fontsize: "small", 
   width: 100,
   padding: '0 30px',

@@ -14,7 +14,7 @@ function SearchRestaurants({ input, setInput }) {
     },
     {
       name: "Location", 
-      options: ["New York", "Queens", 'Brooklyn']
+      options: ["New York City", "Queens", 'Brooklyn', "Bronx"]
     },
     {
       name: "Cuisine", 
