@@ -19,3 +19,12 @@
     /* background-color: rgb(245, 240, 233); */
     place-content: center/center;
 }
+
+.styledHr{
+    margin: 10px;
+
+    border-top: medium double rgb(207, 200, 200);
+    height: 3px;
+    padding: 0;
+    color: rgb(215, 196, 196);
+}

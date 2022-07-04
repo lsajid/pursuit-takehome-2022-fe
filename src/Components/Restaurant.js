@@ -10,22 +10,23 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
-const Img = styled("img")({
-  margin: 'auto',
-  display: 'block',
-  maxWidth: '100%',
-  maxHeight: '100%',
-});
-
-const paperStyle = {
-  p: 2,
-  margin: 'auto',
-  maxWidth: 500,
-  flexGrow: 1,
-  backgroundColor: "rgb(246, 242, 237)"
-}
 
 function Restaurant( { singleRestaurant } ) {
+  const Img = styled("img")({
+    margin: 'auto',
+    display: 'block',
+    maxWidth: '100%',
+    maxHeight: '100%',
+  });
+  
+  const paperStyle = {
+    p: 2,
+    margin: 'auto',
+    maxWidth: 500,
+    flexGrow: 1,
+    backgroundColor: "rgb(246, 242, 237)"
+  }
+
   const id = singleRestaurant.id;
   return ( 
     <div className='restaurant-container'>

@@ -2,27 +2,8 @@ import React, {useState} from 'react';
 import axios from "axios";
 import "../Styles/CreateRestaurantModal.css";
 import { Link, useNavigate } from "react-router-dom";
-import { IconButton, Button, Modal, Typography, Box, OutlinedInput, InputLabel, FormControl } from '@mui/material';
+import {  Button, Modal, Typography, Box, OutlinedInput, InputLabel, FormControl, TextField } from '@mui/material';
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 500,
-  height: 650,
-  bgcolor: "ghostwhite",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 9,
-};
-
-const style2 = {
-  margin: "1px",
-  padding: "2px",
-  width: 500,
-  height: 590
-}
 
 function CreateRestaurantModal( ) {
   const [open, setOpen] = useState(false);
@@ -72,17 +53,60 @@ function CreateRestaurantModal( ) {
         handleClose();
   }
 
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 500,
+    height: 650,
+    bgcolor: "ghostwhite",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 9,
+  };
+  
+  const style2 = {
+    margin: "1px",
+    padding: "2px",
+    width: 500,
+    height: 590,
+    display: "grid",
+    gridTemplateColumns: { sm: '1fr 1fr'},
+    gap: 2,
+  }
+
+  const navOptStyle = {
+    margin: "3px",
+    border: 0,
+    borderRadius: 3,
+    minHeight: "28px",
+    boxShadow: '0 3px 4px 2px #40858C',
+    color: '#1A3538',
+    fontsize: "small", 
+    width: 200,
+    padding: '0 30px',
+  }
+
   return (
     <div>
-      <Button className="menu-button" onClick={handleOpen}>
-        CREATE RESTAURANT
-      </Button>
+      <div className='navOpt-container'>
+        <Button sx={navOptStyle} variant="outlined" className="menu-button" onClick={handleOpen}>
+          <Typography gutterBottom variant="subtitle1" component="div">
+            CREATE RESTAURANT
+          </Typography>
+        </Button>
 
-      <Link to={"/reservations"}>
-          <Button className="menu-button">
-            VIEW ALL RESERVATIONS
-      </Button>
-    </Link>            
+      
+        <Link to={"/reservations"}>
+          <Button sx={navOptStyle} variant="outlined" className="menu-button">
+            <Typography gutterBottom variant="subtitle1" component="div">
+              ALL RESERVATIONS
+            </Typography>
+          </Button>
+        </Link> 
+      </div>
+                 
     <Modal
       open={open}
       onClose={handleClose}
@@ -96,42 +120,39 @@ function CreateRestaurantModal( ) {
         <hr/>
         <div className="form-modal-box">
             
-            <Box type="form" sx={style2} className="form-modal-box" onSubmit={handleSubmitForm}>
+            <Box component="form" sx={style2} className="form-modal-box" onSubmit={handleSubmitForm}>
                 <FormControl>
-                    <InputLabel htmlFor="name">Name</InputLabel>
-                    <OutlinedInput
+                    <TextField
                         id="name"
                         type= 'text'
                         value={restaurant.name}
                         onChange={handleTextChange}
-                        label="name"
-                    />
-                </FormControl>
-                <FormControl>
-                    <InputLabel htmlFor="description">Description</InputLabel>
-                    <OutlinedInput
-                        id="description"
-                        type= 'text'
-                        value={restaurant.description}
-                        onChange={handleTextChange}
-                        label="description"
-                    />
-                </FormControl>
-               
-                <FormControl>
-                    <InputLabel htmlFor="phoneNumber">Phone Number</InputLabel>
-                    <OutlinedInput
-                        id="phoneNumber"
-                        type= 'text'
-                        value={restaurant.phoneNumber}
-                        onChange={handleTextChange}
-                        label="phoneNumber"
+                        label="Name"
                     />
                 </FormControl>
 
                 <FormControl>
-                    <InputLabel htmlFor="openingTime">Opening Time</InputLabel>
-                    <OutlinedInput
+                    <TextField
+                        id="description"
+                        type= 'text'
+                        value={restaurant.description}
+                        onChange={handleTextChange}
+                        label="Description"
+                    />
+                </FormControl>
+               
+                <FormControl>
+                    <TextField
+                        id="phoneNumber"
+                        type= 'text'
+                        value={restaurant.phoneNumber}
+                        onChange={handleTextChange}
+                        label="Phone Number"
+                    />
+                </FormControl>
+
+                <FormControl>
+                    <TextField
                         id="openingTime"
                         type= 'text'
                         value={restaurant.openingTime}

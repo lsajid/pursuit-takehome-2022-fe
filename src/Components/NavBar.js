@@ -9,10 +9,11 @@ import { IconButton, Typography } from '@mui/material';
 function NavBar({handleInput, handleSubmit, input}) {
   return (
     <nav className='navbar-container'>
+
             <div className='info-image-box'>
                 <Link to="/"> <img src={logoImage} alt="click to go to home page"/> </Link>
             </div>
-        
+
             <div className='form-container'>
                 <form onSubmit={handleSubmit} className='search-form'>
                     <div>
@@ -29,6 +30,7 @@ function NavBar({handleInput, handleSubmit, input}) {
                     />
                 </form>
             </div>
+            
             <div className='menu-box'>
                 <CreateRestaurantModal/>
             </div>

@@ -46,9 +46,12 @@ function Home({ input, setInput }) {
       </div>
 
       <div className='restaurants-box'>
+        <hr className='styledHr'/>
         {/* pass input fields and setInput down into Restaurants component */}
         <Restaurants filterButtonValue={filterButtonValue} setFilterButtonValue={setFilterButtonValue} filterCatergoryNames={filterCategoryNames} input={input} setInput={setInput} filterCategoryNames={filterCategoryNames} restaurants={restaurants}/>
+        <hr className='styledHr'/>
       </div>
+     
     </div>
   )
 }
