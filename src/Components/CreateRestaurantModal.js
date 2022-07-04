@@ -12,8 +12,8 @@ function CreateRestaurantModal( ) {
     name:'',
     description:'',
     phoneNumber: '', 
-    openingTime: '', 
-    closingTime: '', 
+    openingTime: '00:00:00', 
+    closingTime: '00:00:00', 
     location: '', 
     cuisine: '', 
     price: '', 
@@ -26,6 +26,23 @@ function CreateRestaurantModal( ) {
   const navigate = useNavigate();
   const url = process.env.REACT_APP_API_URL;
 
+  const formatPhone = (value, previousValue) => {
+    if(!value) return value; //return nothing if no value
+
+    const currentValue = value.replace(/[^\d]/g, '');
+    const cvLength = currentValue.length;
+
+    if(!previousValue || value.length > previousValue.length ){
+      if (cvLength < 4) return currentValue;
+      if (cvLength < 7 ) return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3)}`;
+      return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3, 6)}-${currentValue.slice(6, 10)}`; 
+    }
+  }
+
+  const handlePhone = (event) => {
+    setRestaurant(prevState => ({...restaurant, [event.target.id]: formatPhone( event.target.value, prevState.phoneNumber)}))
+  }
+
   const addRestaurant = (newRestaurant) => {
     console.log(newRestaurant);
     axios.post(`${url}/api/restaurants`, newRestaurant)
@@ -36,6 +53,14 @@ function CreateRestaurantModal( ) {
   const handleTextChange = (event) => {
 		setRestaurant({ ...restaurant, [event.target.id]: event.target.value });
 	};
+
+
+  const handleTime = (event) => {
+    setRestaurant({
+      ...restaurant,
+      [event.target.id]: event.target.value + ":00",
+    });
+  };
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
@@ -49,8 +74,8 @@ function CreateRestaurantModal( ) {
         name:'',
         description:'',
         phoneNumber: '', 
-        openingTime: '', 
-        closingTime: '', 
+        openingTime: '00:00:00', 
+        closingTime: '00:00:00', 
         location: '', 
         cuisine: '', 
         price: '', 
@@ -163,7 +188,6 @@ function CreateRestaurantModal( ) {
                     <ValidationTextField
                         id="description"
                         type= 'text'
-                        
                         value={restaurant.description}
                         onChange={handleTextChange}
                         label="Description"
@@ -173,19 +197,21 @@ function CreateRestaurantModal( ) {
                 <FormControl>
                     <TextField
                         id="phoneNumber"
-                        type= 'text'
+                        type= 'tel'
+                        pattern="[0-9]{10}"
                         value={restaurant.phoneNumber}
-                        onChange={handleTextChange}
+                        onChange={handlePhone}
                         label="Phone Number"
+                        placeholder='(xxx) xxx-xxxx'
                     />
                 </FormControl>
 
                 <FormControl>
                     <TextField
                         id="openingTime"
-                        type= 'text'
+                        type= 'time'
                         value={restaurant.openingTime}
-                        onChange={handleTextChange}
+                        onChange={handleTime}
                         label="openingTime"
                     />
                 </FormControl>
@@ -194,9 +220,9 @@ function CreateRestaurantModal( ) {
                     <InputLabel htmlFor="closingTime">Closing Time</InputLabel>
                     <OutlinedInput
                         id="closingTime"
-                        type= 'text'
+                        type= 'time'
                         value={restaurant.closingTime}
-                        onChange={handleTextChange}
+                        onChange={handleTime}
                         label="closingTime"
                     />
                 </FormControl>
