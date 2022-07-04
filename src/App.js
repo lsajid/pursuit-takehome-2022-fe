@@ -26,7 +26,6 @@ function App() {
 
   return (
     <div className="main">
-
       {/* pass handleInput and input into the navbar for functionalit y */}
       <NavBar handleSubmit={handleSubmit} handleInput={handleInput} input={input}/>
       <Routes>  
