@@ -22,7 +22,7 @@
 
 .styledHr{
     margin: 10px;
-
+    border: 0;
     border-top: medium double rgb(207, 200, 200);
     height: 3px;
     padding: 0;

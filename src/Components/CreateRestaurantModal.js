@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
 import axios from "axios";
+import {styled } from '@mui/material/styles';
 import "../Styles/CreateRestaurantModal.css";
 import { Link, useNavigate } from "react-router-dom";
 import {  Button, Modal, Typography, Box, OutlinedInput, InputLabel, FormControl, TextField } from '@mui/material';
 
-
 function CreateRestaurantModal( ) {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [ nameError, setNameError ] = useState(false);
   const [ restaurant, setRestaurant ] = useState({
     name:'',
     description:'',
@@ -20,6 +19,9 @@ function CreateRestaurantModal( ) {
     price: '', 
     diningRestriction: ''  //diningRestriction must be in the form of [Takeout Only OR Delivery Only]
   });
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const navigate = useNavigate();
   const url = process.env.REACT_APP_API_URL;
@@ -36,21 +38,26 @@ function CreateRestaurantModal( ) {
 	};
 
   const handleSubmitForm = (event) => {
-        event.preventDefault();
-        addRestaurant(restaurant);
-        setRestaurant({
-            name:'',
-            description:'',
-            phoneNumber: '', 
-            openingTime: '', 
-            closingTime: '', 
-            location: '', 
-            cuisine: '', 
-            price: '', 
-            diningRestriction: ''
-        });
-        navigate("/");
-        handleClose();
+    event.preventDefault();
+    setNameError(false);
+    
+    if( restaurant.name === ' ') {
+      setNameError(true)
+    }
+    addRestaurant(restaurant);
+    setRestaurant({
+        name:'',
+        description:'',
+        phoneNumber: '', 
+        openingTime: '', 
+        closingTime: '', 
+        location: '', 
+        cuisine: '', 
+        price: '', 
+        diningRestriction: ''
+    });
+    navigate("/");
+    handleClose();
   }
 
   const style = {
@@ -59,7 +66,7 @@ function CreateRestaurantModal( ) {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: 500,
-    height: 650,
+    height: 630,
     bgcolor: "ghostwhite",
     border: "2px solid #000",
     boxShadow: 24,
@@ -87,6 +94,21 @@ function CreateRestaurantModal( ) {
     width: 200,
     padding: '0 30px',
   }
+  
+  const ValidationTextField = styled(TextField)({
+    '& input:valid + fieldset': {
+      borderColor: 'green',
+      borderWidth: 2,
+    },
+    '& input:invalid + fieldset': {
+      borderColor: 'red',
+      borderWidth: 2,
+    },
+    '& input:valid:focus + fieldset': {
+      borderLeftWidth: 6,
+      padding: '2px', // override inline-style
+    },
+  });
 
   return (
     <div>
@@ -114,27 +136,34 @@ function CreateRestaurantModal( ) {
       aria-describedby="modal-modal-description"
     >
     <Box className='modal-box' sx={style}>
-        <Typography id="modal-title" variant="h5" component="h2">
-                Add Restaurant
-        </Typography>
-        <hr/>
+      <div className='modal-title'>
+        <Typography  gutterBottom variant="h6" component="div" >
+              Create New Restaurant
+          </Typography>
+          <hr className='styledHr'/>
+      </div>
+
         <div className="form-modal-box">
             
             <Box component="form" sx={style2} className="form-modal-box" onSubmit={handleSubmitForm}>
                 <FormControl>
-                    <TextField
+                    <ValidationTextField
                         id="name"
+                        defaultValue="Success"
+                        variant="outlined"
                         type= 'text'
                         value={restaurant.name}
                         onChange={handleTextChange}
                         label="Name"
+                        error={nameError}
                     />
                 </FormControl>
 
                 <FormControl>
-                    <TextField
+                    <ValidationTextField
                         id="description"
                         type= 'text'
+                        
                         value={restaurant.description}
                         onChange={handleTextChange}
                         label="Description"

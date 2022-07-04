@@ -11,7 +11,6 @@ import Home from "./Pages/Home";
 import SingleRestaurant from "./Pages/SingleRestaurant";
 import IndexReservations from "./Pages/IndexReservations";
 
-
 function App() {
   const [ input, setInput ] = useState(''); //useState hook for the searchInput ...
 
