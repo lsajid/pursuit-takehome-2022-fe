@@ -5,7 +5,7 @@ import "../Styles/Home.css";
 
 function Home({ input, setInput }) {
   const [ restaurants, setRestaurants ] = useState([]);
-  const [ filterButtonValue, setFilterButtonValue ] = useState('');
+  const [ filterButtonValue, setFilterButtonValue ] = useState([]);
   const [ filterCategoryNames, setFilterCategoryNames ] = useState([
     {
       name: "Price", 

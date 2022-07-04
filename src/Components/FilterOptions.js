@@ -16,16 +16,17 @@ const buttonStyle = {
   padding: '0 30px',
 }
 
-function FilterOptions({filterCategoryNames, setFilterButtonValue}) {
+function FilterOptions({filterButtonValue, filterCategoryNames, setFilterButtonValue}) {
 
-  const handleFilterButtonChange = (event) => {
+  const handleFilterButtonAdd = (event) => {
     event.preventDefault();
-    setFilterButtonValue(event.target.value)
+    setFilterButtonValue([...filterButtonValue, event.target.value])
   }
 
   const handleResetFilterButton = () => {
-    setFilterButtonValue('');
+    setFilterButtonValue([]);
   }
+  
 
   const showAllFilters = filterCategoryNames.map((category, index) => {
     return (
@@ -41,7 +42,7 @@ function FilterOptions({filterCategoryNames, setFilterButtonValue}) {
         </div>
         <div className='buttons-value-container'>
             {category.options.map((option, index) => {
-              return <Button sx={buttonStyle}className="single-button-filter" key={option+index} value={option} onClick={handleFilterButtonChange} variant="outlined">{option}</Button>
+              return <Button sx={buttonStyle}className="single-button-filter" key={option+index} value={option} onClick={handleFilterButtonAdd} variant="outlined">{option}</Button>
             })}
         </div>
     </div>

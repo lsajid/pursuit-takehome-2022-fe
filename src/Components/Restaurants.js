@@ -13,28 +13,37 @@ function Restaurants({restaurants, filterCategoryNames, input, filterButtonValue
     return restaurantsArr.filter((restaurant) => restaurant.name.toLowerCase().includes(input.toLowerCase()))
   }
 
-  const handleFilterRestaurants = (restaurantArr, filterVal) => {
-    if(!filterVal){
+  const handleFilterRestaurants = (restaurantArr, filterValArr) => {
+    if(filterValArr.length < 1){
       return restaurantArr
     }
     return restaurantArr.filter((restaurant) => {
-      if(restaurant.price === filterVal && getCategory(filterVal) === 'Price'){
+      return filterHelperFunc(restaurant, filterValArr)
+    })
+  }
+
+  const filterHelperFunc = (restaurant, filterValArr) => {
+    return filterValArr.every((filter) => checkForFilterVal(restaurant, filter) )
+    //return true if restaurant.location === "Queens" && restaurant.price === '$'
+  }
+  const checkForFilterVal = (restaurant, filter) => {
+   
+      if(restaurant.price === filter && getCategory(filter) === 'Price'){
         return true
       }
-      if(restaurant.location === filterVal && getCategory(filterVal) === 'Location'){
+      if(restaurant.location === filter && getCategory(filter) === 'Location'){
         return true
       }
-      if(restaurant.cuisine === filterVal && getCategory(filterVal) === 'Cuisine'){
-        console.log(restaurant.cuisine);
+      if(restaurant.cuisine === filter && getCategory(filter) === 'Cuisine'){
         return true
       }
       if(restaurant.diningRestriction){
-        if(restaurant.diningRestriction === filterVal && getCategory(filterVal) === 'Dining Restrictions'){
+        if(restaurant.diningRestriction === filter && getCategory(filter) === 'Dining Restrictions'){
           return true
         }
       }
       return false
-    })
+
   }
  
   const renderAllRest = (restaurantArr, input, filterVal) => {
