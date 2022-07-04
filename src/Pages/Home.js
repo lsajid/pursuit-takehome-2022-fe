@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Restaurants from '../Components/Restaurants';
 import FilterBar from '../Components/FilterBar';
 import "../Styles/Home.css";
-import SandBox from "../Components/SandBox";
 
 function Home({ input, setInput }) {
   const [ restaurants, setRestaurants ] = useState([]);
@@ -47,7 +46,6 @@ function Home({ input, setInput }) {
 
       <div className='restaurants-box'>
         <hr className='styledHr'/>
-        <SandBox/>
         {/* pass input fields and setInput down into Restaurants component */}
         <Restaurants filterButtonValue={filterButtonValue} setFilterButtonValue={setFilterButtonValue} filterCatergoryNames={filterCategoryNames} input={input} setInput={setInput} filterCategoryNames={filterCategoryNames} restaurants={restaurants}/>
         <hr className='styledHr'/>
