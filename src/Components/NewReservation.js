@@ -5,13 +5,14 @@ import "../Styles/NewReservation.css"
 
 function NewReservation({ newReservation, handleTextChange, handleSubmitForm }) {
     const style = {
-        transform: "translate(20%, 0%)",
+        // transform: "translate(13%, 0%)",
+        marginLeft: "70px",
         width: 400,
         height: 550,
         bgcolor: "ghostwhite",
         border: "2px double #000",
         borderRadius: "10px",
-        boxShadow: 24,
+        boxShadow: "0 0 10px 0 #f5005780",
         p: 9,
         backgroundColor: "ghostwhite",
     }
@@ -21,7 +22,7 @@ function NewReservation({ newReservation, handleTextChange, handleSubmitForm }) 
         display: "grid",
         gridTemplateColumns: { sm: '1fr 1fr'},
         gap: 4,
-      }
+    }
 
 
   return (

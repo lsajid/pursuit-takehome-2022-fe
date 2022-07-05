@@ -1,4 +1,6 @@
 .reservations-page-container{
     margin-top: 130px;
-
+    border: 6px double pink;
+    margin: 130px 10px 10px 10px;
+    padding:30px;
 }

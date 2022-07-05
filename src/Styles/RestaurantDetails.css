@@ -42,6 +42,7 @@
     background-color: rgb(245, 240, 235);
     margin-left: auto;
     margin-right: auto;
+    max-width: 600px;
 }
 
 .info-bar{
@@ -60,4 +61,6 @@
 .info-container-2-form{
     grid-area: form;
     background-color: rgb(250, 203, 211);
+    border-radius: 30px;
+    margin-right: 30px;
 }

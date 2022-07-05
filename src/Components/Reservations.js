@@ -12,15 +12,15 @@ function Reservations() {
   const url = process.env.REACT_APP_API_URL;
 
   const reservationsContainerstyle = {
-    position: "absolute",
-    top: "30%",
-    left: "50%",
+    // position: "absolute",
+    // top: "30%",
+    // left: "50%",
     marginTop: "200px",
-    transform: "translate(-50%, -50%)",
+    // transform: "translate(-50%, -50%)",
     width: "80vw",
     height: "auto",
     bgcolor: "ghostwhite",
-    border: "1px solid ghostwhite",
+    border: "4px double pink",
     boxShadow: 1,
     p: 9,
   }
@@ -39,13 +39,7 @@ function Reservations() {
 
   return (
     <div className='all-reservations-container'>
-
-      <Box sx={reservationsContainerstyle}>
-        <Typography id="box title" variant="h5" component="h2">
-          All Reservations
-        </Typography>
         {displayAllReservations}
-      </Box>
     </div>
   )
 }

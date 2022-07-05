@@ -115,7 +115,7 @@ function RestaurantDetails({restaurantReservations}) {
     width: "34px",
     color: "ghostwhite",
     background:
-      "linear-gradient(to right, #aea0d5, #eaafc8)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
+      "linear-gradient(to right, #aea0d5, #eaafc8)",
     "&:after": {
       content: '" "',
       position: "absolute",
