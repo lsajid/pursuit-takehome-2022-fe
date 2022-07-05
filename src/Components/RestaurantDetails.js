@@ -1,15 +1,17 @@
 import {useState, useEffect} from 'react';
 import {Link, useParams, useNavigate } from "react-router-dom";
 import "../Styles/RestaurantDetails.css";
-import restaurantImage1 from "../assets/restaurant-singleView-image.jpeg";
-import restaurantImage2 from "../assets/restaurant-singleView-image2.jpeg";
-import restaurantImage3 from "../assets/restaurant-singleView-image3.jpeg";
+import restaurantImage1 from "../assets/restaurant-inside-seating.jpeg";
 import {Button, Box} from '@mui/material';
-import { Modal, Typography } from '@mui/material';
+import { Modal, Typography, Grid } from '@mui/material';
 import Reservation from './Reservation';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
 import NewReservation from './NewReservation';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import axios from "axios";
-
 
 
 function RestaurantDetails({restaurantReservations}) {
@@ -58,9 +60,6 @@ function RestaurantDetails({restaurantReservations}) {
   
   const url = process.env.REACT_APP_API_URL;
 
-  const imageArray = [ restaurantImage1, restaurantImage2, restaurantImage3];
-
-  const randomImage = imageArray[Math.floor(Math.random()*(imageArray.length))];
 
   useEffect(() => {
     fetch(`${url}/api/restaurants/${id}`)
@@ -108,52 +107,133 @@ function RestaurantDetails({restaurantReservations}) {
     .catch(error => console.log(error))
   }
 
+  const buttonStyle = {
+    margin:3,
+    position: "relative",
+    paddingLeft: 10,
+    paddingRight: 10,
+    width: "34px",
+    color: "ghostwhite",
+    background:
+      "linear-gradient(to right, #aea0d5, #eaafc8)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
+    "&:after": {
+      content: '" "',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      boxShadow: "0 0 10px 0 #f5005780",
+      animation: "mui-ripple-pulsate 1s infinite",
+      zIndex: -1
+  }
+}
+
   return (
-    <div>
+    <div className='all-details-container'>
+
       <div className='buttons-container'>
-        <Link to = {"/"}><Button>BACK</Button></Link>
-      </div>
-      <img src={randomImage} alt="aesthetic view of outdoor restaurant"/> 
-      <h1>{restaurant.name}</h1>
-      <div className='prev-filters'>
-        <div>
-          {restaurant.cuisine}
-        </div>
-        
-        <div>
-          {restaurant.location}
-        </div>
-
-        <div>
-          {restaurant.price}
-        </div>
-
-        <div>
-          Dining Restrictions: {restaurant.diningRestriction} 
-        </div>
-      </div>
-
-      <div>
-        <p>{restaurant.description}</p>
-        <div> PhoneNumber: {restaurant.phoneNumber}</div>
-        <div> Open from: {restaurant.openingTime} to {restaurant.closingTime} </div>
+        <Link to = {"/"}><Button sx={buttonStyle}>BACK</Button></Link>
       </div>
       
-      <div className='createReservationForm'>
-        <h4>Make a Reservation</h4>
-      </div>
 
+
+      <div className='info-container'>
+
+        <div className='image-container'>
+            <img src={restaurantImage1} alt="aesthetic view of restaurant seating"/> 
+        </div>
+
+        <div className='info-container-1'>
+          <Typography gutterBottom variant="h4" >
+            {restaurant.name}
+          </Typography>
+
+          <hr/>
+
+          <div className="info-bar">
+            <Grid container spacing={7}>
+              <Grid item xs={2}>
+                <Typography variant="body2" color="text.secondary" gutterBottom>
+                    <div>
+                      <RestaurantOutlinedIcon/>
+                      <span>
+                        {restaurant.cuisine}
+                      </span>
+                    </div>
+                </Typography>
+              </Grid>
+              <Grid item xs={5}>
+                <Typography variant="body2" color="text.secondary" gutterBottom>
+                  <div>
+                    <LocationOnIcon/> 
+                    <span>
+                      {restaurant.location}
+                    </span>
+                  </div>
+                </Typography>
+              </Grid>
+              <Grid item xs={1}>
+              <Typography variant="body2" color="text.secondary" gutterBottom>
+                {restaurant.price}
+              </Typography>
+              </Grid>
+            </Grid>
+          </div>
+
+          <div className='info-details'>
+            <Grid container wrap="nowrap" spacing={0}>
+              <Grid item xs zeroMinWidth>
+                <Typography>
+                {restaurant.description}
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid container wrap>
+              <Grid item xs zeroMinWidth>
+                <Typography>
+                  <span><StorefrontIcon/></span>
+                  {restaurant.diningRestriction} 
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid container wrap="nowrap" spacing={3}>
+              <Grid item xs zeroMinWidth>
+                <Typography>
+                  <span><LocalPhoneIcon/></span>
+                   {restaurant.phoneNumber}
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid container wrap="nowrap" spacing={4}>
+              <Grid item xs zeroMinWidth>
+                <Typography>
+                  <span><AccessTimeIcon/></span>
+                  {restaurant.openingTime} to {restaurant.closingTime}
+                </Typography>
+              </Grid>
+            </Grid>
+          </div>
+
+          <div className='info-buttons'>
+            <Grid container spacing={7}>
+              <Grid item xs={4}>
+                <Button sx={buttonStyle} onClick={handleOpen}>VIEW RESERVATIONS</Button>
+              </Grid>
+              <Grid item xs={4}>
+                <Button sx={buttonStyle} onClick={handleDelete}>DELETE RESTAURANT</Button>
+              </Grid>
+            </Grid>
+          </div>
+        </div>
+
+        <div className='info-container-2-form'>
+          <NewReservation newReservation={newReservation} handleTextChange={handleTextChange}  handleSubmitForm={handleSubmitForm}/>
+        </div>
+      </div>
+    
 
       
-      <div>
-        <Button onClick={handleOpen}>VIEW RESERVATIONS</Button>
-        <Button onClick={handleDelete}>DELETE</Button>
-      </div>
-
-      <div className='new-form'>
-        <NewReservation newReservation={newReservation} handleTextChange={handleTextChange}  handleSubmitForm={handleSubmitForm}/>
-      </div>
-
       <Modal
         open={open}
         onClose={handleClose}

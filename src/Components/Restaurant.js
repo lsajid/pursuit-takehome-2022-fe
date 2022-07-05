@@ -70,7 +70,6 @@ function Restaurant( { singleRestaurant } ) {
                         {singleRestaurant.openingTime} - {singleRestaurant.closingTime}
                       </span>
                     </div>
-                    
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     <div>

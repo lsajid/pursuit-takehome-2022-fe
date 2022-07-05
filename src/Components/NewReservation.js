@@ -4,14 +4,15 @@ import { FormControl, InputLabel, Button, OutlinedInput, Typography } from '@mui
 
 function NewReservation({ newReservation, handleTextChange, handleSubmitForm }) {
     const style = {
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-20%, 0%)",
+        // position: "absolute",
+        // top: "50%",
+        // left: "90%",
+        transform: "translate(20%, 0%)",
         width: 400,
         height: 550,
         bgcolor: "ghostwhite",
         border: "2px solid #000",
+        borderRadius: "10px",
         boxShadow: 24,
         p: 9,
         backgroundColor: "ghostwhite"

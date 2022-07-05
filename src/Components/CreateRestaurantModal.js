@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import axios from "axios";
 import "../Styles/CreateRestaurantModal.css";
 import { Link, useNavigate } from "react-router-dom";
-import {  Button, Modal, Typography, Box, OutlinedInput, InputLabel, FormControl, TextField, Radio, FormLabel, RadioGroup, FormControlLabel} from '@mui/material';
+import {  Button, Modal, Typography, Box, OutlinedInput, InputLabel, FormControl, TextField,} from '@mui/material';
 
 function CreateRestaurantModal( ) {
   const [open, setOpen] = useState(false);
@@ -165,6 +165,7 @@ function CreateRestaurantModal( ) {
                 <FormControl>
                     <TextField
                         id="name"
+                        required={true}
                         variant="outlined"
                         type= 'text'
                         value={restaurant.name}
@@ -175,6 +176,7 @@ function CreateRestaurantModal( ) {
 
                 <FormControl>
                     <TextField
+                        required={true}
                         id="description"
                         type= 'text'
                         value={restaurant.description}
@@ -187,6 +189,7 @@ function CreateRestaurantModal( ) {
                     <TextField
                         id="phoneNumber"
                         type= 'tel'
+                        required={true}
                         pattern="[0-9]{10}"
                         value={restaurant.phoneNumber}
                         onChange={handleTextChange}
@@ -199,6 +202,7 @@ function CreateRestaurantModal( ) {
                     <TextField
                         id="openingTime"
                         type= 'time'
+                        required={true}
                         value={restaurant.openingTime}
                         onChange={handleTime}
                         label="openingTime"
@@ -209,6 +213,7 @@ function CreateRestaurantModal( ) {
                     <InputLabel htmlFor="closingTime">Closing Time</InputLabel>
                     <OutlinedInput
                         id="closingTime"
+                        required={true}
                         type= 'time'
                         value={restaurant.closingTime}
                         onChange={handleTime}
@@ -217,7 +222,7 @@ function CreateRestaurantModal( ) {
                 </FormControl>
 
                 <FormControl>
-                  <select id="location" onChange={handleTextChange}>
+                  <select id="location" required onChange={handleTextChange}>
                     <option value="">Select Location</option>
                     <option value="New York City">New York City</option>
                     <option value="Queens">Queens</option>
@@ -227,7 +232,7 @@ function CreateRestaurantModal( ) {
                 </FormControl>
                 
                 <FormControl>
-                    <InputLabel htmlFor="cuisine">Cuisine Type</InputLabel>
+                    <InputLabel required={true} htmlFor="cuisine">Cuisine Type</InputLabel>
                     <OutlinedInput
                         id="cuisine"
                         type= 'text'
@@ -237,7 +242,7 @@ function CreateRestaurantModal( ) {
                     />
                 </FormControl>
                 <FormControl>
-                  <select id="price" onChange={handleTextChange}>
+                  <select id="price" required onChange={handleTextChange}>
                     <option value="">Select Price</option>
                     <option value="$">$</option>
                     <option value="$$">$$</option>
@@ -246,7 +251,7 @@ function CreateRestaurantModal( ) {
                   </select>
                 </FormControl>
                 <FormControl>
-                  <select id="diningRestriction" onChange={handleTextChange}>
+                  <select id="diningRestriction" required onChange={handleTextChange}>
                     <option value="">Select Dining Restriction</option>
                     <option value="Takeout Only">Takeout Only</option>
                     <option value="Delivery Only">Delivery Only</option>
