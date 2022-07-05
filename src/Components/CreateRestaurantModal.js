@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
 import axios from "axios";
-import {styled } from '@mui/material/styles';
 import "../Styles/CreateRestaurantModal.css";
 import { Link, useNavigate } from "react-router-dom";
-import {  Button, Modal, Typography, Box, OutlinedInput, InputLabel, FormControl, TextField } from '@mui/material';
+import {  Button, Modal, Typography, Box, OutlinedInput, InputLabel, FormControl, TextField, Radio, FormLabel, RadioGroup, FormControlLabel} from '@mui/material';
 
 function CreateRestaurantModal( ) {
   const [open, setOpen] = useState(false);
-  const [ nameError, setNameError ] = useState(false);
   const [ restaurant, setRestaurant ] = useState({
     name:'',
     description:'',
@@ -43,8 +41,14 @@ function CreateRestaurantModal( ) {
     setRestaurant(prevState => ({...restaurant, [event.target.id]: formatPhone( event.target.value, prevState.phoneNumber)}))
   }
 
+  const formattedRestaurant = (newRestaurant) => {
+    const value = formatPhoneLengthTo10Char(newRestaurant.phoneNumber)
+    setRestaurant({...newRestaurant, phoneNumber: value})
+    
+  }
+
   const addRestaurant = (newRestaurant) => {
-    console.log(newRestaurant);
+    console.log(newRestaurant, "New restaurant to add");
     axios.post(`${url}/api/restaurants`, newRestaurant)
         .then((res) => navigate("/"))
         .catch((err) => console.log(err))
@@ -54,7 +58,6 @@ function CreateRestaurantModal( ) {
 		setRestaurant({ ...restaurant, [event.target.id]: event.target.value });
 	};
 
-
   const handleTime = (event) => {
     setRestaurant({
       ...restaurant,
@@ -62,13 +65,16 @@ function CreateRestaurantModal( ) {
     });
   };
 
+  const formatPhoneLengthTo10Char = (phoneNumberChar) => {
+    console.log(phoneNumberChar)
+    const regex = /[^0-9]/g
+    let newStr = phoneNumberChar.replace(regex, "")
+    return newStr;
+  }
+
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    setNameError(false);
-    
-    if( restaurant.name === ' ') {
-      setNameError(true)
-    }
+    // formattedRestaurant(restaurant);
     addRestaurant(restaurant);
     setRestaurant({
         name:'',
@@ -119,21 +125,6 @@ function CreateRestaurantModal( ) {
     width: 200,
     padding: '0 30px',
   }
-  
-  const ValidationTextField = styled(TextField)({
-    '& input:valid + fieldset': {
-      borderColor: 'green',
-      borderWidth: 2,
-    },
-    '& input:invalid + fieldset': {
-      borderColor: 'red',
-      borderWidth: 2,
-    },
-    '& input:valid:focus + fieldset': {
-      borderLeftWidth: 6,
-      padding: '2px', // override inline-style
-    },
-  });
 
   return (
     <div>
@@ -172,20 +163,18 @@ function CreateRestaurantModal( ) {
             
             <Box component="form" sx={style2} className="form-modal-box" onSubmit={handleSubmitForm}>
                 <FormControl>
-                    <ValidationTextField
+                    <TextField
                         id="name"
-                        defaultValue="Success"
                         variant="outlined"
                         type= 'text'
                         value={restaurant.name}
-                        onChange={handleTextChange}
+                        onInput={handleTextChange}
                         label="Name"
-                        error={nameError}
                     />
                 </FormControl>
 
                 <FormControl>
-                    <ValidationTextField
+                    <TextField
                         id="description"
                         type= 'text'
                         value={restaurant.description}
@@ -200,7 +189,7 @@ function CreateRestaurantModal( ) {
                         type= 'tel'
                         pattern="[0-9]{10}"
                         value={restaurant.phoneNumber}
-                        onChange={handlePhone}
+                        onChange={handleTextChange}
                         label="Phone Number"
                         placeholder='(xxx) xxx-xxxx'
                     />
@@ -228,14 +217,13 @@ function CreateRestaurantModal( ) {
                 </FormControl>
 
                 <FormControl>
-                    <InputLabel htmlFor="location">Location</InputLabel>
-                    <OutlinedInput
-                        id="location"
-                        type= 'text'
-                        value={restaurant.location}
-                        onChange={handleTextChange}
-                        label="location"
-                    />
+                  <select id="location" onChange={handleTextChange}>
+                    <option value="">Select Location</option>
+                    <option value="New York City">New York City</option>
+                    <option value="Queens">Queens</option>
+                    <option value="Brooklyn">Brooklyn</option>
+                    <option value="Bronx">Bronx</option>
+                  </select>
                 </FormControl>
                 
                 <FormControl>
@@ -249,25 +237,20 @@ function CreateRestaurantModal( ) {
                     />
                 </FormControl>
                 <FormControl>
-                    <InputLabel htmlFor="price">Price Range</InputLabel>
-                    <OutlinedInput
-                        id="price"
-                        type= 'text'
-                        value={restaurant.price}
-                        onChange={handleTextChange}
-                        label="price"
-                    />
+                  <select id="price" onChange={handleTextChange}>
+                    <option value="">Select Price</option>
+                    <option value="$">$</option>
+                    <option value="$$">$$</option>
+                    <option value="$$$">$$$</option>
+                    <option value="$$$$">$$$$</option>
+                  </select>
                 </FormControl>
-                
                 <FormControl>
-                    <InputLabel htmlFor="diningRestriction">Dining Restrictions</InputLabel>
-                    <OutlinedInput
-                        id="diningRestriction"
-                        type= 'text'
-                        value={restaurant.diningRestriction}
-                        onChange={handleTextChange}
-                        label="diningRestriction"
-                    />
+                  <select id="diningRestriction" onChange={handleTextChange}>
+                    <option value="">Select Dining Restriction</option>
+                    <option value="Takeout Only">Takeout Only</option>
+                    <option value="Delivery Only">Delivery Only</option>
+                  </select>
                 </FormControl>
             </Box>
         </div>
