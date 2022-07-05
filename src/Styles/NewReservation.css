@@ -1,0 +1,7 @@
+.reservation-form{
+    background-color: aliceblue;
+    grid-template-columns: 1fr;
+    display: grid;
+    margin: 10px;
+    padding:10px;
+}

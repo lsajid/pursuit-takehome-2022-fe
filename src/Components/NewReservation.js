@@ -1,29 +1,37 @@
 import React from 'react';
-import { FormControl, InputLabel, Button, OutlinedInput, Typography } from '@mui/material';
+import { FormControl, Box, InputLabel, Button, OutlinedInput, Typography } from '@mui/material';
+import "../Styles/NewReservation.css"
 
 
 function NewReservation({ newReservation, handleTextChange, handleSubmitForm }) {
     const style = {
-        // position: "absolute",
-        // top: "50%",
-        // left: "90%",
         transform: "translate(20%, 0%)",
         width: 400,
         height: 550,
         bgcolor: "ghostwhite",
-        border: "2px solid #000",
+        border: "2px double #000",
         borderRadius: "10px",
         boxShadow: 24,
         p: 9,
-        backgroundColor: "ghostwhite"
+        backgroundColor: "ghostwhite",
     }
+    const style2 = {
+        margin: "1px",
+        padding: "2px",
+        display: "grid",
+        gridTemplateColumns: { sm: '1fr 1fr'},
+        gap: 4,
+      }
+
 
   return (
     <div>
-        <form style={style} onSubmit={handleSubmitForm}>
-            <Typography variant="h5">
-                Make a reservation
-            </Typography>
+        <Box sx={style}>
+        <Typography variant="h5">
+            Make a reservation
+        </Typography>
+        <hr/>
+        <Box style={style2} component="form" className="reservation-form" onSubmit={handleSubmitForm}>
             <FormControl>
                 <InputLabel htmlFor="firstName">First Name</InputLabel>
                     <OutlinedInput
@@ -85,7 +93,9 @@ function NewReservation({ newReservation, handleTextChange, handleSubmitForm }) 
                     />
             </FormControl>
             <Button type="submit" variant="outlined">Submit</Button>
-        </form>
+        </Box>
+        </Box>
+
     </div>
   )
 }
