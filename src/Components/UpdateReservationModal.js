@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from "axios";
 import { Typography, Box, Modal, FormControl, TextField, MenuItem, FormLabel, Button } from '@mui/material';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function UpdateReservationModal(props) {
 //box from material UI
@@ -15,8 +15,6 @@ function UpdateReservationModal(props) {
         time: props.reservation.time
     });
 
-
-    
     // useEffect(() => {
     //      const url = process.env.REACT_APP_API_URL;
     //     const id = props.reservation.id

@@ -88,6 +88,10 @@ function RestaurantDetails({restaurantReservations}) {
     setNewReservation({...newReservation, [event.target.id] : event.target.value, restaurantId: id});
   }
 
+  const handleGuests = (event) => {
+    setNewReservation({...newReservation, numGuests: event.target.value})
+}
+
   const handleSubmitForm = (event) => {
     event.preventDefault()
     addNewReservation(newReservation);
@@ -228,7 +232,7 @@ function RestaurantDetails({restaurantReservations}) {
         </div>
 
         <div className='info-container-2-form'>
-          <NewReservation newReservation={newReservation} handleTextChange={handleTextChange}  handleSubmitForm={handleSubmitForm}/>
+          <NewReservation handleGuests={handleGuests} newReservation={newReservation} handleTextChange={handleTextChange}  handleSubmitForm={handleSubmitForm}/>
         </div>
       </div>
     
