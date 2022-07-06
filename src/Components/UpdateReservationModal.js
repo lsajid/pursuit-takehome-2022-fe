@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import axios from "axios";
 import { Typography, Box, Modal, FormControl, TextField, MenuItem, FormLabel, Button } from '@mui/material';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function UpdateReservationModal(props) {
 //box from material UI
@@ -69,7 +70,22 @@ function UpdateReservationModal(props) {
     }
 
     const isReservationValid = (reservation) => {
+        
+    }
 
+    const url = process.env.REACT_APP_API_URL;
+    const id = props.reservation.id
+    // console.log(`${url}/api/reservations/${id}`)
+    const navigate = useNavigate();
+
+    const updateReservationRequest = (updatedReservation) => {
+        console.log(updatedReservation)
+        axios.patch(`${url}/api/reservations/${id}`, updateReservation)
+            .then((res) => {
+                navigate('/')
+            }).catch((err) => {
+                console.log(err)
+            });
     }
 
     const makeNumberGuestList = (guests) => {
@@ -84,8 +100,10 @@ function UpdateReservationModal(props) {
         });
     }
 
-    const handleSubmit = () => {
-        console.log("trigger")
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log("Submit Button clicked");
+        updateReservationRequest(updateReservation)
     }
 
   return (
@@ -128,7 +146,6 @@ function UpdateReservationModal(props) {
                         <FormControl>
                             <TextField
                                 type="email"
-                                required={true}
                                 label="Email"
                                 value={updateReservation.email}
                                 onChange={handleTextChange}
@@ -167,10 +184,9 @@ function UpdateReservationModal(props) {
                                 type="datetime-local"
                             />
                         </FormControl>
-                        <Button type="submit" variant="outlined">Submit</Button>
+                        <Button disabled={handleButtonDisable()} type="submit" variant="outlined">Submit</Button>
                     </Box>
                 </div>
-
             </Box>
         </Modal>
     </div>
