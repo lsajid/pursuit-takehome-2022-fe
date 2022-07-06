@@ -56,11 +56,6 @@ function Reservation({reservation}) {
         setOpen(true);
     }
     
-
-    const handleClose = () => {
-    setOpen(false);
-    }
-
     useEffect(() => {
     axios.get(`${url}/api/restaurants/${reservation.restaurantId}`)
         .then((res) => {
@@ -115,8 +110,7 @@ function Reservation({reservation}) {
         </Link>
         <Button sx={buttonStyle} onClick={handleDeleteReservation}>Delete</Button>
         <Button onClick={handleOpen} sx={buttonStyle}>EDIT</Button>
-        <UpdateReservationModal open={open} handleClose={handleClose} reservation={reservation}/>
-    
+        <UpdateReservationModal setOpen={setOpen} handleOpen={handleOpen} open={open} reservation={reservation}/>
     </div>
   )
 }

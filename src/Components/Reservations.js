@@ -24,6 +24,8 @@ function Reservations() {
     boxShadow: 1,
     p: 9,
   }
+
+  console.log()
   
   useEffect(() => {
     axios.get(`${url}/api/reservations`)

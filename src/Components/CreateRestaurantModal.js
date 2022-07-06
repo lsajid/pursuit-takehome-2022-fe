@@ -150,13 +150,14 @@ function CreateRestaurantModal( ) {
       onClose={handleClose}
       aria-labelledby="Enter information to create your restaurant"
     >
-    <Box className='modal-box' sx={style}>
-      <div className='modal-title'>
-          <Typography  gutterBottom variant="h6" component="div" >
-              Create New Restaurant
-          </Typography>
-          <hr className='styledHr'/>
-      </div>
+      <Box className='modal-box' sx={style}>
+        <div className='modal-title'>
+            <Typography  gutterBottom variant="h6" component="div" >
+                Create New Restaurant
+            </Typography>
+            <hr className='styledHr'/>
+        </div>
+
         <div className="form-modal-box">
             <Box component="form" sx={style2} className="form-modal-box" onSubmit={handleSubmitForm}>
                 <FormControl>
@@ -181,7 +182,7 @@ function CreateRestaurantModal( ) {
                         label="Description"
                     />
                 </FormControl>
-               
+              
                 <FormControl>
                     <TextField
                         id="phoneNumber"
@@ -238,6 +239,7 @@ function CreateRestaurantModal( ) {
                         label="cuisine"
                     />
                 </FormControl>
+
                 <FormControl>
                   <select id="price" required onChange={handleTextChange}>
                     <option value="">Select Price</option>
@@ -247,6 +249,7 @@ function CreateRestaurantModal( ) {
                     <option value="$$$$">$$$$</option>
                   </select>
                 </FormControl>
+
                 <FormControl>
                   <select id="diningRestriction" required onChange={handleTextChange}>
                     <option value="">Select Dining Restriction</option>
@@ -257,8 +260,9 @@ function CreateRestaurantModal( ) {
             </Box>
         </div>
         <Button variant="outlined" onClick={handleSubmitForm}type='submit'>Submit</Button>
-    </Box>
-</Modal></div>
+      </Box>
+    </Modal>
+  </div>
   )
 }
 
