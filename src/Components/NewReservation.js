@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormControl, Box, InputLabel, Button, OutlinedInput, Typography } from '@mui/material';
+import { FormControl, Box, InputLabel, Button, OutlinedInput, Typography, FormLabel } from '@mui/material';
 import "../Styles/NewReservation.css"
 
 
@@ -34,23 +34,21 @@ function NewReservation({ newReservation, handleTextChange, handleSubmitForm }) 
         <hr/>
         <Box style={style2} component="form" className="reservation-form" onSubmit={handleSubmitForm}>
             <FormControl>
-                <InputLabel htmlFor="firstName">First Name</InputLabel>
+                <FormLabel id="firstName">First Name</FormLabel>
                     <OutlinedInput
                         id="firstName"
                         type= 'text'
                         value={newReservation.firstName}
                         onChange={handleTextChange}
-                        label="firstName"
                     />
             </FormControl>
             <FormControl>
-                <InputLabel htmlFor="lastName">Last Name</InputLabel>
+                <FormLabel id="lastName">Last Name</FormLabel>
                     <OutlinedInput
                         id="lastName"
                         type= 'text'
                         value={newReservation.lastName}
                         onChange={handleTextChange}
-                        label="lastName"
                     />
             </FormControl>
             <FormControl>
@@ -60,7 +58,6 @@ function NewReservation({ newReservation, handleTextChange, handleSubmitForm }) 
                         type= 'text'
                         value={newReservation.phoneNumber}
                         onChange={handleTextChange}
-                        label="phoneNumber"
                     />
             </FormControl>
             <FormControl>
@@ -74,17 +71,15 @@ function NewReservation({ newReservation, handleTextChange, handleSubmitForm }) 
                     />
             </FormControl>
             <FormControl>
-                <InputLabel htmlFor="time">Time</InputLabel>
+                    <FormLabel id="resTime">Reservation Time</FormLabel>
                     <OutlinedInput
                         id="time"
-                        type= 'text'
                         value={newReservation.time}
                         onChange={handleTextChange}
-                        label="time"
+                        type="datetime-local"
                     />
             </FormControl>
             <FormControl>
-                <InputLabel htmlFor="numGuests">Number of Guests</InputLabel>
                     <OutlinedInput
                         id="numGuests"
                         type= 'text'

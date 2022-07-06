@@ -257,9 +257,10 @@ function CreateRestaurantModal( ) {
                     <option value="Delivery Only">Delivery Only</option>
                   </select>
                 </FormControl>
+                <Button variant="outlined" onClick={handleSubmitForm}type='submit'>Submit</Button>
             </Box>
         </div>
-        <Button variant="outlined" onClick={handleSubmitForm}type='submit'>Submit</Button>
+        
       </Box>
     </Modal>
   </div>

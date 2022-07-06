@@ -110,7 +110,7 @@ function Reservation({reservation}) {
         </Link>
         <Button sx={buttonStyle} onClick={handleDeleteReservation}>Delete</Button>
         <Button onClick={handleOpen} sx={buttonStyle}>EDIT</Button>
-        <UpdateReservationModal setOpen={setOpen} handleOpen={handleOpen} open={open} reservation={reservation}/>
+        <UpdateReservationModal buttonStyle={buttonStyle} setOpen={setOpen} handleOpen={handleOpen} open={open} reservation={reservation}/>
     </div>
   )
 }

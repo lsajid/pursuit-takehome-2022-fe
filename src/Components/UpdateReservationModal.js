@@ -1,28 +1,29 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import { Typography, Box, Modal, FormControl, TextField } from '@mui/material';
+import { Typography, Box, Modal, FormControl, TextField, MenuItem, FormLabel, Button } from '@mui/material';
 
 function UpdateReservationModal(props) {
 //box from material UI
 //props: open, handleClose, reservation, setReservation
     const [ updateReservation, setUpdateReservation ] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        numGuests: 1,
-        phoneNumber: "",
-        time: ""
+        firstName: props.reservation.firstName,
+        lastName: props.reservation.lastName,
+        email: props.reservation.email,
+        numGuests: props.reservation.numGuests,
+        phoneNumber: props.reservation.phoneNumber,
+        time: props.reservation.time
     });
 
-    const url = process.env.REACT_APP_API_URL;
 
-    useEffect(() => {
-        const id = props.reservation.id
-        axios.get(`${url}/api/reservations/${id}`)
-            .then((res) => {
-                setUpdateReservation(res.data)
-            }).catch((err) => console.log(err))
-    }, [])
+    
+    // useEffect(() => {
+    //      const url = process.env.REACT_APP_API_URL;
+    //     const id = props.reservation.id
+    //     axios.get(`${url}/api/reservations/${id}`)
+    //         .then((res) => {
+    //             setUpdateReservation(res.data)
+    //         }).catch((err) => console.log(err))
+    // }, [])
 
     const handleTextChange = (event) => {
         setUpdateReservation({...updateReservation, [event.target.id] : event.target.value })
@@ -31,8 +32,6 @@ function UpdateReservationModal(props) {
     const handleGuests = (event) => {
         setUpdateReservation({...updateReservation, numGuests: event.target.value})
     }
-
-    console.log(updateReservation)
 
     const boxContainerStyling = {
         position: "absolute",
@@ -69,11 +68,26 @@ function UpdateReservationModal(props) {
         }
     }
 
-    const isUpdateReservationValid = (reservation) => {
-        
+    const isReservationValid = (reservation) => {
+
     }
 
-    console.log(props, "Update reser" )
+    const makeNumberGuestList = (guests) => {
+        const seatsArr  = Array.from(Array(guests+1).keys());
+        return seatsArr
+    }
+
+    const renderCustomSeats = (numOfGuests) => {
+        let newSeats = makeNumberGuestList(numOfGuests)
+        return newSeats.map((number) => {
+            return <MenuItem key={number} id="numGuests" value={number}> {number} Guests</MenuItem>
+        });
+    }
+
+    const handleSubmit = () => {
+        console.log("trigger")
+    }
+
   return (
     <div className='update-reservation-modal-container'>
         <Modal
@@ -89,14 +103,8 @@ function UpdateReservationModal(props) {
                     <hr className='styledHr'/>
                 </div>
 
-        {/* firstName: "",
-        lastName: "",
-        email: "",
-        numGuests: 1,
-        phoneNumber: "",
-        time: "" */}
                 <div className='update-form-container'>
-                    <Box component="form" style={formStyle}>
+                    <Box component="form" onSubmit={handleSubmit} style={formStyle}>
                         <FormControl>
                             <TextField
                                 id="firstName"
@@ -129,7 +137,6 @@ function UpdateReservationModal(props) {
                         
                         <FormControl>
                             <TextField
-                                type="Phone Number"
                                 required={true}
                                 value={updateReservation.phoneNumber}
                                 label="Phone Number"
@@ -138,9 +145,29 @@ function UpdateReservationModal(props) {
                         </FormControl>
 
                         <FormControl>
-
+                            <TextField
+                                required={true}
+                                label="Number of Guests"
+                                onChange={handleGuests}
+                                select
+                                id="numGuests" 
+                                value={updateReservation.numGuests}
+                            >
+                                <MenuItem id="numGuests" value={0}></MenuItem>
+                                {renderCustomSeats(15)}
+                            </TextField>
                         </FormControl>
 
+                        <FormControl>
+                            <FormLabel id="resTime">Reservation Time</FormLabel>
+                            <TextField
+                                required
+                                id="time"
+                                onChange={handleTextChange}
+                                type="datetime-local"
+                            />
+                        </FormControl>
+                        <Button type="submit" variant="outlined">Submit</Button>
                     </Box>
                 </div>
 
