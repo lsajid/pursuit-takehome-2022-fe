@@ -7,9 +7,12 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import axios from 'axios';
+import UpdateReservationModal from './UpdateReservationModal';
 
 function Reservation({reservation}) {
     const [ restaurantName, setRestaurantName ] = useState("");
+    const [open, setOpen] = useState(false);
+
     const url = process.env.REACT_APP_API_URL;
     let navigate = useNavigate();
     
@@ -49,6 +52,15 @@ function Reservation({reservation}) {
       }
     }
 
+    const handleOpen = () => {
+        setOpen(true);
+    }
+    
+
+    const handleClose = () => {
+    setOpen(false);
+    }
+
     useEffect(() => {
     axios.get(`${url}/api/restaurants/${reservation.restaurantId}`)
         .then((res) => {
@@ -61,50 +73,51 @@ function Reservation({reservation}) {
 
   return (
     <div className="single-reservation-container">
-    <Link to={`/restaurant/${reservation.restaurantId}`}>
-        <Paper
-            sx={paperStyle}
-        >
-            <Grid container spacing={2}>
-                <Grid item sx={{width:128, height:128}}>
-                    <Typography gutterBottom color="text.secondary" variant="h6" component="div">
-                       {restaurantName}
-                    </Typography>                    
-                </Grid>
+        <Link to={`/restaurant/${reservation.restaurantId}`}>
+            <Paper
+                sx={paperStyle}
+            >
+                <Grid container spacing={2}>
+                    <Grid item sx={{width:128, height:128}}>
+                        <Typography gutterBottom color="text.secondary" variant="h6" component="div">
+                        {restaurantName}
+                        </Typography>                    
+                    </Grid>
 
-                <Grid item xs={13} sm container>
-                    <Grid item xs container direction="column" spacing={7}>
-                        <Grid item xs>
-                        <Typography variant="h6">
-                            {reservation.firstName} {reservation.lastName}
-                        </Typography>
-                        <hr/>
-                        <Typography gutterBottom color="text.secondary" variant="subtitle1" component="div">
-                                <EmojiPeopleIcon/>
-                                Party Size: {reservation.numGuests}
+                    <Grid item xs={13} sm container>
+                        <Grid item xs container direction="column" spacing={7}>
+                            <Grid item xs>
+                            <Typography variant="h6">
+                                {reservation.firstName} {reservation.lastName}
                             </Typography>
+                            <hr/>
                             <Typography gutterBottom color="text.secondary" variant="subtitle1" component="div">
-                                <LocalPhoneIcon/>
-                                Phone Number: {reservation.phoneNumber}
-                            </Typography>
-                            <Typography gutterBottom color="text.secondary" variant="subtitle1" component="div">
-                                <DateRangeIcon/>
-                                Date: {reservation.time}
-                            </Typography>
-                            <Typography gutterBottom color="text.secondary" variant="subtitle1" component="div">
-                                <AccessTimeIcon/>
-                                Time: {reservation.time}
-                            </Typography>
+                                    <EmojiPeopleIcon/>
+                                    Party Size: {reservation.numGuests}
+                                </Typography>
+                                <Typography gutterBottom color="text.secondary" variant="subtitle1" component="div">
+                                    <LocalPhoneIcon/>
+                                    Phone Number: {reservation.phoneNumber}
+                                </Typography>
+                                <Typography gutterBottom color="text.secondary" variant="subtitle1" component="div">
+                                    <DateRangeIcon/>
+                                    Date: {reservation.time}
+                                </Typography>
+                                <Typography gutterBottom color="text.secondary" variant="subtitle1" component="div">
+                                    <AccessTimeIcon/>
+                                    Time: {reservation.time}
+                                </Typography>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
-        </Paper>
-    </Link>
-    <Button sx={buttonStyle} onClick={handleDeleteReservation}>Delete</Button>
-    <Button sx={buttonStyle}>EDIT</Button>
+            </Paper>
+        </Link>
+        <Button sx={buttonStyle} onClick={handleDeleteReservation}>Delete</Button>
+        <Button onClick={handleOpen} sx={buttonStyle}>EDIT</Button>
+        <UpdateReservationModal open={open} handleClose={handleClose} reservation={reservation}/>
+    
     </div>
-
   )
 }
 

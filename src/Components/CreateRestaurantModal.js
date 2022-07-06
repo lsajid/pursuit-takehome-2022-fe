@@ -148,19 +148,16 @@ function CreateRestaurantModal( ) {
     <Modal
       open={open}
       onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
+      aria-labelledby="Enter information to create your restaurant"
     >
     <Box className='modal-box' sx={style}>
       <div className='modal-title'>
-        <Typography  gutterBottom variant="h6" component="div" >
+          <Typography  gutterBottom variant="h6" component="div" >
               Create New Restaurant
           </Typography>
           <hr className='styledHr'/>
       </div>
-
         <div className="form-modal-box">
-            
             <Box component="form" sx={style2} className="form-modal-box" onSubmit={handleSubmitForm}>
                 <FormControl>
                     <TextField
