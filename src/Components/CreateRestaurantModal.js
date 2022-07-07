@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import axios from "axios";
 import "../Styles/CreateRestaurantModal.css";
 import { Link, useNavigate } from "react-router-dom";
-import {  Button, Modal, Typography, Box, OutlinedInput, InputLabel, FormControl, TextField,} from '@mui/material';
+import {  Button, Modal, Typography, Box, FormControl, TextField, MenuItem,} from '@mui/material';
 
 function CreateRestaurantModal( ) {
   const [open, setOpen] = useState(false);
@@ -65,6 +65,18 @@ function CreateRestaurantModal( ) {
     });
   };
 
+  const handleLocation = (event) => {
+    setRestaurant({...restaurant, location: event.target.value})
+  }
+
+  const handlePrice = (event) => {
+    setRestaurant({...restaurant, price: event.target.value})
+  }
+
+  const handleDiningRestriction = (event) => {
+    setRestaurant({...restaurant, diningRestriction: event.target.value})
+  }
+
   const formatPhoneLengthTo10Char = (phoneNumberChar) => {
     console.log(phoneNumberChar)
     const regex = /[^0-9]/g
@@ -124,6 +136,10 @@ function CreateRestaurantModal( ) {
     fontsize: "small", 
     width: 200,
     padding: '0 30px',
+  }
+
+  const buttonStyle = {
+    height: "56px"
   }
 
   return (
@@ -186,7 +202,6 @@ function CreateRestaurantModal( ) {
                 <FormControl>
                     <TextField
                         id="phoneNumber"
-                        type= 'tel'
                         required={true}
                         pattern="[0-9]{10}"
                         value={restaurant.phoneNumber}
@@ -203,61 +218,81 @@ function CreateRestaurantModal( ) {
                         required={true}
                         value={restaurant.openingTime}
                         onChange={handleTime}
-                        label="openingTime"
+                        label="Opening Time"
                     />
                 </FormControl>
                     
                 <FormControl>
-                    <InputLabel htmlFor="closingTime">Closing Time</InputLabel>
-                    <OutlinedInput
+                    <TextField
                         id="closingTime"
                         required={true}
                         type= 'time'
                         value={restaurant.closingTime}
                         onChange={handleTime}
-                        label="closingTime"
+                        label="Closing Time"
                     />
                 </FormControl>
 
                 <FormControl>
-                  <select id="location" required onChange={handleTextChange}>
-                    <option value="">Select Location</option>
-                    <option value="New York City">New York City</option>
-                    <option value="Queens">Queens</option>
-                    <option value="Brooklyn">Brooklyn</option>
-                    <option value="Bronx">Bronx</option>
-                  </select>
+                  <TextField
+                    required={true}
+                    id="location"
+                    onChange={handleLocation}
+                    select
+                    label="Location"
+                    value={restaurant.location}
+                  >
+                    <MenuItem id="location" value=""></MenuItem>
+                    <MenuItem id="location" value="New York City">New York City</MenuItem>
+                    <MenuItem id="location" value="Queens">Queens</MenuItem>
+                    <MenuItem id="location" value="Brooklyn">Brooklyn</MenuItem>
+                    <MenuItem id="location" value="Bronx">Bronx</MenuItem>
+                  </TextField>
                 </FormControl>
                 
                 <FormControl>
-                    <InputLabel required={true} htmlFor="cuisine">Cuisine Type</InputLabel>
-                    <OutlinedInput
+                    <TextField
                         id="cuisine"
-                        type= 'text'
+                        type='text'
+                        required={true}
                         value={restaurant.cuisine}
                         onChange={handleTextChange}
-                        label="cuisine"
+                        label="Cuisine"
                     />
                 </FormControl>
 
                 <FormControl>
-                  <select id="price" required onChange={handleTextChange}>
-                    <option value="">Select Price</option>
-                    <option value="$">$</option>
-                    <option value="$$">$$</option>
-                    <option value="$$$">$$$</option>
-                    <option value="$$$$">$$$$</option>
-                  </select>
+                <TextField
+                    required={true}
+                    id="price"
+                    onChange={handlePrice}
+                    select
+                    label="Price Range"
+                    value={restaurant.price}
+                  >
+                    <MenuItem id="price" value=""></MenuItem>
+                    <MenuItem id="price" value="$">$</MenuItem>
+                    <MenuItem id="price" value="$$">$$</MenuItem>
+                    <MenuItem id="price" value="$$$">$$$</MenuItem>
+                    <MenuItem id="price" value="$$$$">$$$$</MenuItem>
+                  </TextField>
                 </FormControl>
 
                 <FormControl>
-                  <select id="diningRestriction" required onChange={handleTextChange}>
-                    <option value="">Select Dining Restriction</option>
-                    <option value="Takeout Only">Takeout Only</option>
-                    <option value="Delivery Only">Delivery Only</option>
-                  </select>
+                  <TextField
+                    required={true}
+                    id="diningRestriction"
+                    onChange={handleDiningRestriction}
+                    value={restaurant.diningRestriction}
+                    select
+                    label="Dining Restrictions"
+                  >
+                    <MenuItem id="diningRestriction"></MenuItem>
+                    <MenuItem id="diningRestriction" value="Takeout Only">Takeout Only</MenuItem>
+                    <MenuItem id="diningRestriction" value="Delivery Only">Delivery Only</MenuItem>
+                  </TextField>
                 </FormControl>
-                <Button variant="outlined" onClick={handleSubmitForm}type='submit'>Submit</Button>
+                <Button sx={buttonStyle} variant="outlined" onClick={handleSubmitForm}type='submit'>Submit</Button>
             </Box>
         </div>
         

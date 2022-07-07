@@ -27,6 +27,7 @@ function RestaurantDetails({restaurantReservations}) {
   });
 
   const {id} = useParams();
+  const navigate = useNavigate();
 
   const [ restaurant, setRestaurant ] = useState({
     name:'',
@@ -55,8 +56,6 @@ function RestaurantDetails({restaurantReservations}) {
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const navigate = useNavigate();
   
   const url = process.env.REACT_APP_API_URL;
 
@@ -103,6 +102,7 @@ function RestaurantDetails({restaurantReservations}) {
       time: "",
       numGuests: ""
     })
+    navigate("/")
   }
 
   const addNewReservation = (newReservation) => {
