@@ -4,6 +4,7 @@ import "../Styles/Reservation.css"
 import {Button, Grid, Paper, Typography} from "@mui/material";
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import EmailIcon from '@mui/icons-material/Email';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import axios from 'axios';
@@ -92,6 +93,10 @@ function Reservation({reservation}) {
                             <Typography gutterBottom color="text.secondary" variant="subtitle1" component="div">
                                     <EmojiPeopleIcon/>
                                     Party Size: {reservation.numGuests}
+                                </Typography>
+                                <Typography gutterBottom color="text.secondary" variant="subtitle1" component="div">
+                                    <EmailIcon/>
+                                    Email: {reservation.email}
                                 </Typography>
                                 <Typography gutterBottom color="text.secondary" variant="subtitle1" component="div">
                                     <LocalPhoneIcon/>

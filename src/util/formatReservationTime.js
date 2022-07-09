@@ -1,4 +1,3 @@
-import formatTime from "./formatTime";
 /**
  * Takes ISO formatted date and converts to formatted time
  * 
