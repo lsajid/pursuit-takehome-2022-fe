@@ -34,13 +34,17 @@ const formatTime = (timeSr) => {
 
     hour = hour > 12? hour -12 : hour;
     
-
     if(hour === 12){
         hour = 11;
         min = '59'
     }
+
     if(hour === 0){
-        hour = 12
+        hour = 12;
+    }
+
+    if(min === "0"){
+        min = "00"
     }
     
     return hour + ":"+ min + format;
