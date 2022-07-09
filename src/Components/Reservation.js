@@ -8,6 +8,8 @@ import DateRangeIcon from '@mui/icons-material/DateRange';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import axios from 'axios';
 import UpdateReservationModal from './UpdateReservationModal';
+import formatReservationDate from '../util/formatReservationDate';
+import formatReservationTime from '../util/formatReservationTime';
 
 function Reservation({reservation}) {
     const [ restaurantName, setRestaurantName ] = useState("");
@@ -96,11 +98,11 @@ function Reservation({reservation}) {
                                 </Typography>
                                 <Typography gutterBottom color="text.secondary" variant="subtitle1" component="div">
                                     <DateRangeIcon/>
-                                    Date: {reservation.time}
+                                    Date: {formatReservationDate(reservation.time)}
                                 </Typography>
                                 <Typography gutterBottom color="text.secondary" variant="subtitle1" component="div">
                                     <AccessTimeIcon/>
-                                    Time: {reservation.time}
+                                    Time: {formatReservationTime(reservation.time)}
                                 </Typography>
                             </Grid>
                         </Grid>

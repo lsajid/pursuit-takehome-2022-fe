@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+
 import restaurantStockImg from "../assets/restaurant.png";
 import "../Styles/Restaurant.css";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -9,7 +10,7 @@ import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-
+import formatTime from '../util/formatTime';
 
 function Restaurant( { singleRestaurant } ) {
   const Img = styled("img")({
@@ -67,7 +68,7 @@ function Restaurant( { singleRestaurant } ) {
                     <div>
                       <AccessTimeOutlinedIcon/>
                       <span>
-                        {singleRestaurant.openingTime} - {singleRestaurant.closingTime}
+                        {formatTime(singleRestaurant.openingTime)} - {formatTime(singleRestaurant.closingTime)}
                       </span>
                     </div>
                   </Typography>

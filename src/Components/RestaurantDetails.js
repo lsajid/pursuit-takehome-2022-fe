@@ -12,6 +12,7 @@ import StorefrontIcon from '@mui/icons-material/Storefront';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import axios from "axios";
+import formatTime from '../util/formatTime';
 
 
 function RestaurantDetails({restaurantReservations}) {
@@ -213,7 +214,7 @@ function RestaurantDetails({restaurantReservations}) {
               <Grid item xs zeroMinWidth>
                 <Typography>
                   <span><AccessTimeIcon/></span>
-                  {restaurant.openingTime} to {restaurant.closingTime}
+                  {formatTime(restaurant.openingTime)} to {formatTime(restaurant.closingTime)}
                 </Typography>
               </Grid>
             </Grid>
