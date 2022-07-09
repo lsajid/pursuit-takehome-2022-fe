@@ -13,6 +13,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import axios from "axios";
 import formatTime from '../util/formatTime';
+import formatPhoneNumber from '../util/formatPhoneNumber';
 
 
 function RestaurantDetails({restaurantReservations}) {
@@ -206,7 +207,7 @@ function RestaurantDetails({restaurantReservations}) {
               <Grid item xs zeroMinWidth>
                 <Typography>
                   <span><LocalPhoneIcon/></span>
-                   {restaurant.phoneNumber}
+                   {formatPhoneNumber(restaurant.phoneNumber)}
                 </Typography>
               </Grid>
             </Grid>

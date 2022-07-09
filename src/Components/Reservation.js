@@ -10,6 +10,7 @@ import axios from 'axios';
 import UpdateReservationModal from './UpdateReservationModal';
 import formatReservationDate from '../util/formatReservationDate';
 import formatReservationTime from '../util/formatReservationTime';
+import formatPhoneNumber from '../util/formatPhoneNumber';
 
 function Reservation({reservation}) {
     const [ restaurantName, setRestaurantName ] = useState("");
@@ -94,7 +95,7 @@ function Reservation({reservation}) {
                                 </Typography>
                                 <Typography gutterBottom color="text.secondary" variant="subtitle1" component="div">
                                     <LocalPhoneIcon/>
-                                    Phone Number: {reservation.phoneNumber}
+                                    Phone Number: {formatPhoneNumber(reservation.phoneNumber)}
                                 </Typography>
                                 <Typography gutterBottom color="text.secondary" variant="subtitle1" component="div">
                                     <DateRangeIcon/>

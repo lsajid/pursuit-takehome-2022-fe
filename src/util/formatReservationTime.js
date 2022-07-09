@@ -2,12 +2,12 @@ import formatTime from "./formatTime";
 /**
  * Takes ISO formatted date and converts to formatted time
  * 
- * 2022-05-11T18:00:00.000Z
+ * 2022-05-11T18:00:00.000Z ----> 12:00AM
  * 
- * 2022-07-08T19:43:00.000Z
+ * 2022-07-08T19:43:00.000Z ----> 7:43PM
  * 
  * @param {string} dateIso
- * @returns {string} 
+ * @returns {string} formated to Time
  */
 
  const formatReservationTime = (dateIso) => {
@@ -17,25 +17,6 @@ import formatTime from "./formatTime";
     let timeStr = hours + ":" + minutes;
     
     return formatTime(timeStr)
-    // let suffix = ''
-    // if(hours >= 12){
-    //     suffix = "PM"
-    // }else {
-    //     suffix = "AM"
-    // }
-
-    // hours = hours > 12 ? hours -12 : hours;
-
-    // if(hours === 12){
-    //     hours = 11;
-    //     minutes = '59';
-    // }
-    
-    // if(hours === 0){
-    //     hours = 12;
-    // }
-
-    // return hours + ":" + minutes 
 }
 
 
