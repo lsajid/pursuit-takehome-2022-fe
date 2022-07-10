@@ -1,20 +1,25 @@
+//react lib
 import {useState, useEffect} from 'react';
+//packages
 import {Link, useParams, useNavigate } from "react-router-dom";
-import "../Styles/RestaurantDetails.css";
-import restaurantImage1 from "../assets/restaurant-inside-seating.jpeg";
-import {Button, Box} from '@mui/material';
-import { Modal, Typography, Grid } from '@mui/material';
+import axios from "axios";
+//components
+import NewReservation from './NewReservation';
 import Reservation from './Reservation';
+//material UI
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
-import NewReservation from './NewReservation';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import axios from "axios";
+import {Button, Box, Modal, Typography, Grid } from '@mui/material';
+//util
 import formatTime from '../util/formatTime';
 import formatPhoneNumber from '../util/formatPhoneNumber';
-
+//image
+import restaurantImage1 from "../assets/restaurant-inside-seating.jpeg";
+//css
+import "../Styles/RestaurantDetails.css";
 
 function RestaurantDetails({restaurantReservations}) {
   const [open, setOpen] = useState(false);

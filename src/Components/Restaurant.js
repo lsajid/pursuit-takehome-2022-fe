@@ -1,15 +1,18 @@
+//react lib
 import React from 'react';
+//packages
 import {Link} from "react-router-dom";
-
-import restaurantStockImg from "../assets/restaurant.png";
-import "../Styles/Restaurant.css";
+//material UI
+import { styled } from '@mui/material/styles';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
-import { styled } from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
+import {Grid, Paper, Typography} from '@mui/material';
+//css
+import "../Styles/Restaurant.css";
+//image
+import restaurantStockImg from "../assets/restaurant.png";
+//util
 import formatTime from '../util/formatTime';
 
 function Restaurant( { singleRestaurant } ) {

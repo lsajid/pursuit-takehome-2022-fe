@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import './App.css';
+import "./App.css";
 import { useState } from "react";
 
 //import of stand alone components
@@ -12,28 +12,34 @@ import SingleRestaurant from "./Pages/SingleRestaurant";
 import IndexReservations from "./Pages/IndexReservations";
 
 function App() {
-  const [ input, setInput ] = useState(''); //useState hook for the searchInput ...
+  const [input, setInput] = useState(""); //useState hook for the searchInput ...
 
-  const handleInput = (event) => { ///handles search input
-      setInput(event.target.value);
-  }
+  const handleInput = (event) => {
+    ///handles search input
+    setInput(event.target.value);
+  };
 
-  const handleSubmit = (event) => { //handles search submit
+  const handleSubmit = (event) => {
+    //handles search submit
     event.preventDefault();
-    setInput('');
-  }
+    setInput("");
+  };
 
   return (
     <div className="main">
       {/* pass handleInput and input into the navbar for functionalit y */}
-      <NavBar handleSubmit={handleSubmit} handleInput={handleInput} input={input}/>
-      <Routes>  
+      <NavBar
+        handleSubmit={handleSubmit}
+        handleInput={handleInput}
+        input={input}
+      />
+      <Routes>
         {/* pass setInput and input into AllRestaurants */}
-        <Route path="/" element={<Home setInput={setInput} input={input}/>}/>
-        <Route path="/restaurant/:id" element={<SingleRestaurant/>}/>
-        <Route path="/reservations" element={<IndexReservations/>}/>
+        <Route path="/" element={<Home setInput={setInput} input={input} />} />
+        <Route path="/restaurant/:id" element={<SingleRestaurant />} />
+        <Route path="/reservations" element={<IndexReservations />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

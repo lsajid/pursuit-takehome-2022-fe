@@ -1,9 +1,12 @@
+//react
 import React from 'react';
-import "../Styles/Reservations.css";
 import { useState, useEffect } from "react";
+//components
 import Reservation from './Reservation';
-import axios from 'axios';
+//css
 import "../Styles/Reservations.css";
+// axios
+import axios from 'axios';
 
 function Reservations() {
   const [ allReservations, setAllReservations ] = useState([]);
