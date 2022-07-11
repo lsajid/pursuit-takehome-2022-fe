@@ -15,6 +15,15 @@ import restaurantStockImg from "../assets/restaurant.png";
 //util
 import formatTime from '../util/formatTime';
 
+// What parts of the app need to be refactored?
+// What will you need to create from scratch?
+// Where will you need to add props?
+// Where will you need to add state? What is the best data type for state?
+// Where will you need to add user interactions? How do these interactions work with the state?
+// What unexpected states or other edge cases will you need to handle?
+// How can you break up the work into stages? How can you test or verify your code as you go?
+
+
 function Restaurant( { singleRestaurant } ) {
   const Img = styled("img")({
     margin: 'auto',
@@ -32,6 +41,8 @@ function Restaurant( { singleRestaurant } ) {
   }
 
   const id = singleRestaurant.id;
+
+
   return ( 
     <div className='restaurant-container'>
       <Link to={`/restaurant/${id}`}>

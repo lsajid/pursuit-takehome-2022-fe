@@ -7,6 +7,16 @@ import "../Styles/Restaurants.css";
 
 function Restaurants({ restaurants, filterCategoryNames, input, filterButtonValue}) {
   //use Map to search through all of the restaurants and return only restaurants that match input
+  
+  ///add property isPopular to the restaurant obj that has the most popular reservations
+  const addIsPopular = (restArr) => {
+    let sortedRests = restArr.sort((a,b) => a.reservations.length - b.reservations.length);
+    let firstThreePopularRest = sortedRests.slice(0,3).map((restaurant) => {
+      return restaurant.isPopular = true;
+    })
+    return firstThreePopularRest;
+  }
+
   const handleSearchRestaurants = (restaurantsArr, input) => {
     if (!input) {
       return restaurantsArr;
@@ -53,7 +63,8 @@ function Restaurants({ restaurants, filterCategoryNames, input, filterButtonValu
   };
 
   const renderAllRest = (restaurantArr, input, filterVal) => {
-    let pass = handleSearchRestaurants(restaurantArr, input);
+    let addedIsPopular = addIsPopular(restaurantArr)  //gets an array of restaurant obj w three popular rests
+    let pass = handleSearchRestaurants(addedIsPopular, input);
     let pass2 = handleFilterRestaurants(pass, filterVal);
     return pass2.map((restaurant) => {
       return (

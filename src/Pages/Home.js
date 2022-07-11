@@ -6,6 +6,7 @@ import "../Styles/Home.css";
 function Home({ input, setInput }) {
   const [restaurants, setRestaurants] = useState([]);
   const [filterButtonValue, setFilterButtonValue] = useState([]);
+  const [ isPopular, setIsPopular ] = useState([]);
   const [filterCategoryNames, setFilterCategoryNames] = useState([
     {
       name: "Price",
@@ -49,6 +50,8 @@ function Home({ input, setInput }) {
       });
   }, [url, restaurants]);
 
+
+
   return (
     <div className="page-container">
       <div className="filter-box">
@@ -58,7 +61,7 @@ function Home({ input, setInput }) {
           filterCategoryNames={filterCategoryNames}
         />
       </div>
-
+      {/* {addPopular()} */}
       <div className="restaurants-box">
         <hr className="styledHr" />
         {/* pass input fields and setInput down into Restaurants component */}
