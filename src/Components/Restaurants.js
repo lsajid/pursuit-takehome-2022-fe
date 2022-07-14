@@ -4,8 +4,16 @@ import React from "react";
 import Restaurant from "./Restaurant";
 //css
 import "../Styles/Restaurants.css";
+//use satte
+import { useState } from "react";
 
 function Restaurants({ restaurants, filterCategoryNames, input, filterButtonValue}) {
+  const [ sortBy, setSortBy ] = useState("");
+
+  const handleSortValue = (event) => {
+    setSortBy(event.target.value);
+  }
+
   //use Map to search through all of the restaurants and return only restaurants that match input
   const handleSearchRestaurants = (restaurantsArr, input) => {
     if (!input) {
@@ -25,7 +33,7 @@ function Restaurants({ restaurants, filterCategoryNames, input, filterButtonValu
     });
   };
 
-  const filterHelperFunc = (restaurant, filterValArr) => {
+  const filterHelperFunc = (restaurant, filterValArr) => { // [ "$", "Queens"]
     return filterValArr.every((filter) =>
       checkForFilterVal(restaurant, filter)
     );
@@ -52,10 +60,26 @@ function Restaurants({ restaurants, filterCategoryNames, input, filterButtonValu
     return false;
   };
 
-  const renderAllRest = (restaurantArr, input, filterVal) => {
-    let pass = handleSearchRestaurants(restaurantArr, input);
-    let pass2 = handleFilterRestaurants(pass, filterVal);
-    return pass2.map((restaurant) => {
+  const sortRestaurants = (restaurantArr, sortInput) => {
+    if(!sortInput){
+      return restaurantArr;
+    }
+    return restaurantArr.sort((a,b) => {
+      let sortReturnVal = 0;
+      if(a.name.toLowerCase() < b.name.toLowerCase()){
+        sortReturnVal = -1;
+      }else if (a.name.toLowerCase() > b.name.toLowerCase()){
+        sortReturnVal = 1;
+      }
+      return sortReturnVal;
+    })
+  }
+
+  const renderAllRest = (restaurantArr, input, filterVal, sortInput) => {
+    let sortedRestaurants = sortRestaurants(restaurantArr, sortInput);
+    let searchedForRest = handleSearchRestaurants(sortedRestaurants, input);
+    let filteredRest = handleFilterRestaurants(searchedForRest, filterVal);
+    return filteredRest.map((restaurant) => {
       return (
         <Restaurant
           key={restaurant.name + "type" + restaurant.cuisine}
@@ -77,7 +101,11 @@ function Restaurants({ restaurants, filterCategoryNames, input, filterButtonValu
 
   return (
     <div className="all-restaurants-container">
-      {renderAllRest(restaurants, input, filterButtonValue)}
+      <select onChange={handleSortValue} id="sort">
+        <option value="">""</option>
+        <option value="name">Sort By Name</option>
+      </select>
+      {renderAllRest(restaurants, input, filterButtonValue, sortBy)}
     </div>
   );
 }

@@ -117,7 +117,7 @@ function Reservation({ reservation }) {
                     component="div"
                   >
                     <EmailIcon />
-                    Email: {reservation.email}
+                    Email: {reservation?.email}
                   </Typography>
                   <Typography
                     gutterBottom
